@@ -3,6 +3,7 @@ Node.js, Express, and MySQL API
 
 ## To Install
 - Install [node.js](https://nodejs.org) optionally using [nvm](https://github.com/creationix/nvm)
+- Install [MySQL](https://www.mysql.com/downloads/) optionally using [brew](https://brew.sh/) `brew install mysql`
 
 ```bash
 npm i
