@@ -65,6 +65,7 @@ class ProfilesViewController: UICollectionViewController {
         
         confirmAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (action: UIAlertAction!) in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.apiController.deletePlayer(id: player.id)
             appDelegate.dataController.managedObjectContext.delete(player)
             do {
                 try appDelegate.dataController.managedObjectContext.save()

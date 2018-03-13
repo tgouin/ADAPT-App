@@ -35,9 +35,9 @@ class ExportToCSV{
         var csvText: String!
         csvText = "Name, Number,Height,Weight,Position\n"
         csvText.append("\(player.name),\(player.number),\(player.height),\(player.weight),\(player.position!)\n")
-        csvText.append("Easy Base Trainings\n")
-        let easy = player.id
-        csvText.append(trainingToCSV(training: easy!))
+//        csvText.append("Easy Base Trainings\n")
+//        let easy = player.id
+//        csvText.append(trainingToCSV(training: easy!))
         
         /*csvText.append("Medium Base Trainings\n")
         for medium in player.mediumBase{

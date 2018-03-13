@@ -1,6 +1,5 @@
 const express = require('express');
 const json = require('express-json');
-//const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
@@ -68,10 +67,9 @@ function sendError(res, code, message) {
 }
 
 const app = express();
-//app.use(bodyParser());
 app.use(json());
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.sendFile(path.resolve( __dirname, 'index.html' )));
 
 app.get('/players', (req,res) => {
     console.log('fetch /players');
