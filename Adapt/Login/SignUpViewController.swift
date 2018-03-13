@@ -137,6 +137,7 @@ class SignUpViewController: UITableViewController, UIImagePickerControllerDelega
                 newPlayer.picture = UIImagePNGRepresentation(resizedImage)
             }
         }
+        appDelegate.apiController.createPlayer(player: newPlayer)
         do {
             try appDelegate.dataController.managedObjectContext.save()
         } catch {
