@@ -12,13 +12,12 @@
     "url": "git+https://github.com/tgouin/ADAPT-App.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Open",
   "bugs": {
     "url": "https://github.com/tgouin/ADAPT-App/issues"
   },
   "homepage": "https://github.com/tgouin/ADAPT-App#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "express-json": "^1.0.0",
     "mysql": "^2.15.0"

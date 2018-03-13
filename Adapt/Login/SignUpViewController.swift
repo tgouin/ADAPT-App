@@ -137,11 +137,6 @@ class SignUpViewController: UITableViewController, UIImagePickerControllerDelega
                 newPlayer.picture = UIImagePNGRepresentation(resizedImage)
             }
         }
-        
-        //CHECK THIS LINE!!!***********************************************************************
-        newPlayer.id?.id = randomString(length: 8)
-        //*****************************************************************************************
-        
         do {
             try appDelegate.dataController.managedObjectContext.save()
         } catch {

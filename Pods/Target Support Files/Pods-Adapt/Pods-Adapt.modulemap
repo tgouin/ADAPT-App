@@ -1,0 +1,6 @@
+framework module Pods_Adapt {
+  umbrella header "Pods-Adapt-umbrella.h"
+
+  export *
+  module * { export * }
+}

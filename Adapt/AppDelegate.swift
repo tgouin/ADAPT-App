@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var bleController: BLEController = BLEController()
+    var apiController: APIController = APIController()
     var dataController: DataController = DataController {
         print("Core Data ready")
     }

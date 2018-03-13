@@ -25,6 +25,7 @@
 		1C9E2665202BDD6900FC275D /* ExportToCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9E2664202BDD6900FC275D /* ExportToCSV.swift */; };
 		1CAC489D204737C200B80BF2 /* angleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC489C204737C200B80BF2 /* angleValidationViewController.swift */; };
 		1CB8994820328B030046AB54 /* trainingPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB8994720328B030046AB54 /* trainingPagedViewController.swift */; };
+		4CDBB66E675977F938679C4E /* Pods_Adapt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB682DB07A3566F0BCF911DF /* Pods_Adapt.framework */; };
 		7B14C8AE200DB18C006300AE /* Euler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14C8AD200DB18C006300AE /* Euler.swift */; };
 		7B14C8D7200DC7E7006300AE /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B14C8D6200DC7E7006300AE /* CoreBluetooth.framework */; };
 		7B14C8D9200DD432006300AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14C8D8200DD432006300AE /* LoginViewController.swift */; };
@@ -32,6 +33,7 @@
 		7B1EFE6A20182AA200A13158 /* Proxima Nova Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6820182A9200A13158 /* Proxima Nova Semibold.ttf */; };
 		7B1EFE6B20182AA200A13158 /* Proxima Nova Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6620182A9200A13158 /* Proxima Nova Thin.ttf */; };
 		7B1EFE6E2018406900A13158 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6D2018406900A13158 /* Colors.swift */; };
+		7B86607020573AEA00ABA566 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B86606F20573AEA00ABA566 /* APIController.swift */; };
 		7B934FAF2030D46A0072642E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B934FAE2030D46A0072642E /* DataController.swift */; };
 		7B934FB3203102B50072642E /* BaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B934FB2203102B50072642E /* BaseType.swift */; };
 		7B934FB5203103130072642E /* TrainingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B934FB4203103130072642E /* TrainingType.swift */; };
@@ -87,6 +89,7 @@
 		1C9E2664202BDD6900FC275D /* ExportToCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportToCSV.swift; sourceTree = "<group>"; };
 		1CAC489C204737C200B80BF2 /* angleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = angleValidationViewController.swift; sourceTree = "<group>"; };
 		1CB8994720328B030046AB54 /* trainingPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trainingPagedViewController.swift; sourceTree = "<group>"; };
+		28617BCB4C3C33EC7A415CAA /* Pods-Adapt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adapt.release.xcconfig"; path = "Pods/Target Support Files/Pods-Adapt/Pods-Adapt.release.xcconfig"; sourceTree = "<group>"; };
 		7B14C8AD200DB18C006300AE /* Euler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Euler.swift; sourceTree = "<group>"; };
 		7B14C8D6200DC7E7006300AE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		7B14C8D8200DD432006300AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		7B1EFE6620182A9200A13158 /* Proxima Nova Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Thin.ttf"; sourceTree = "<group>"; };
 		7B1EFE6820182A9200A13158 /* Proxima Nova Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.ttf"; sourceTree = "<group>"; };
 		7B1EFE6D2018406900A13158 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7B86606F20573AEA00ABA566 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		7B934FAE2030D46A0072642E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		7B934FB2203102B50072642E /* BaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseType.swift; sourceTree = "<group>"; };
 		7B934FB4203103130072642E /* TrainingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingType.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		7BBD3164200332BF00C67AB9 /* DeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCell.swift; sourceTree = "<group>"; };
 		7BD03AE0202D74280002A61F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7BD03AE3202D748D0002A61F /* Adapt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Adapt.xcdatamodel; sourceTree = "<group>"; };
+		D503DC9BFD36292FC063752C /* Pods-Adapt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Adapt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Adapt/Pods-Adapt.debug.xcconfig"; sourceTree = "<group>"; };
+		FB682DB07A3566F0BCF911DF /* Pods_Adapt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Adapt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,7 @@
 			files = (
 				7BD03AE1202D74280002A61F /* CoreData.framework in Frameworks */,
 				7B14C8D7200DC7E7006300AE /* CoreBluetooth.framework in Frameworks */,
+				4CDBB66E675977F938679C4E /* Pods_Adapt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +226,7 @@
 			children = (
 				7BD03AE0202D74280002A61F /* CoreData.framework */,
 				7B14C8D6200DC7E7006300AE /* CoreBluetooth.framework */,
+				FB682DB07A3566F0BCF911DF /* Pods_Adapt.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 				7B934FB4203103130072642E /* TrainingType.swift */,
 				7B934FB6203103580072642E /* LegType.swift */,
 				7B934FB820310A5A0072642E /* OptionType.swift */,
+				7B86606F20573AEA00ABA566 /* APIController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -254,6 +263,7 @@
 				7B9EE0491FE217D700991CF4 /* AdaptUITests */,
 				7B9EE0251FE217D700991CF4 /* Products */,
 				7B14C8D5200DC7E6006300AE /* Frameworks */,
+				E830FA2E0FCA24A2B535B2EF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,6 +314,15 @@
 			path = AdaptUITests;
 			sourceTree = "<group>";
 		};
+		E830FA2E0FCA24A2B535B2EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D503DC9BFD36292FC063752C /* Pods-Adapt.debug.xcconfig */,
+				28617BCB4C3C33EC7A415CAA /* Pods-Adapt.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,9 +330,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7B9EE04F1FE217D700991CF4 /* Build configuration list for PBXNativeTarget "Adapt" */;
 			buildPhases = (
+				95BFD088D4CE60E4E1610661 /* [CP] Check Pods Manifest.lock */,
 				7B9EE0201FE217D700991CF4 /* Sources */,
 				7B9EE0211FE217D700991CF4 /* Frameworks */,
 				7B9EE0221FE217D700991CF4 /* Resources */,
+				23A4CD6CB4C279D310EB056C /* [CP] Embed Pods Frameworks */,
+				4E2E7BF55FD4D71BCD3B1C79 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +461,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		23A4CD6CB4C279D310EB056C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Adapt/Pods-Adapt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Adapt/Pods-Adapt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E2E7BF55FD4D71BCD3B1C79 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Adapt/Pods-Adapt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95BFD088D4CE60E4E1610661 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Adapt-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7B9EE0201FE217D700991CF4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -458,6 +534,7 @@
 				7B9EE02A1FE217D700991CF4 /* MainViewController.swift in Sources */,
 				7B934FAF2030D46A0072642E /* DataController.swift in Sources */,
 				7B934FB5203103130072642E /* TrainingType.swift in Sources */,
+				7B86607020573AEA00ABA566 /* APIController.swift in Sources */,
 				1C9E2665202BDD6900FC275D /* ExportToCSV.swift in Sources */,
 				1C507CCB201FD135003162C1 /* SignUpViewController.swift in Sources */,
 				1C9E266120297D3A00FC275D /* TrainingSetupPopoverViewController.swift in Sources */,
@@ -636,6 +713,7 @@
 		};
 		7B9EE0501FE217D700991CF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D503DC9BFD36292FC063752C /* Pods-Adapt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -652,6 +730,7 @@
 		};
 		7B9EE0511FE217D700991CF4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28617BCB4C3C33EC7A415CAA /* Pods-Adapt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
