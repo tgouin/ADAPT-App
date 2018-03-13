@@ -202,7 +202,7 @@ app.get('/players/create', (req, res) => {
     }})(res));
 });
 
-app.listen(3000, () => {
+app.listen(80, () => {
     console.log('Player Training API listening on port 3000!')
     console.log('Quit by pressing Ctrl+C');
 })
