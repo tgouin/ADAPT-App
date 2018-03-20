@@ -10,5 +10,6 @@ import Foundation
 enum OptionType {
     case Base,
     Training,
-    Leg
+    Leg,
+    TestOrTraining
 }
