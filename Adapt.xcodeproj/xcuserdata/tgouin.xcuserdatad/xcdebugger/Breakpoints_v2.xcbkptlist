@@ -522,11 +522,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/DashBoard/PagesViewController.swift"
-            timestampString = "540085313.652001"
+            timestampString = "543224898.398051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -537,24 +537,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Adapt/DashBoard/PagesViewController.swift"
-            timestampString = "540085313.652068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "newViewController(difficulty:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Adapt/BLE/BLEDevicesViewController.swift"
-            timestampString = "539856242.240896"
+            timestampString = "543224898.39819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -570,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/BLE/BLEDevicesViewController.swift"
-            timestampString = "539856242.240965"
+            timestampString = "543224898.398265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -586,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/BLE/BLEDevicesViewController.swift"
-            timestampString = "539856242.2410311"
+            timestampString = "543224898.398332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -602,12 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.403228"
+            timestampString = "543219402.815394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
             endingLineNumber = "97"
-            landmarkName = "exportToCSV(_:)"
+            landmarkName = "textViewDidEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,12 +602,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.4038301"
+            timestampString = "543219402.815456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "exportToCSV(_:)"
+            landmarkName = "drawScore(score:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -634,12 +618,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.40421"
+            timestampString = "543219402.8155169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "exportToCSV(_:)"
+            landmarkName = "drawScore(score:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -650,13 +634,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.404583"
+            timestampString = "543219402.815577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "exportToCSV(_:)"
-            landmarkType = "7">
+            landmarkName = "ReviewTrainingViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -666,11 +650,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.404958"
+            timestampString = "543219402.8156379"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
+            landmarkName = "drawScore(score:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Adapt/Training/ReviewTrainingViewController.swift"
+            timestampString = "543219402.815698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "exportToCSV(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -682,28 +682,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.405328"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "backToDashboard(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.405696"
+            timestampString = "543219402.815758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "backToDashboard(_:)"
+            landmarkName = "exportToCSV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -714,12 +698,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/ReviewTrainingViewController.swift"
-            timestampString = "540120024.406067"
+            timestampString = "543219402.815819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
             endingLineNumber = "114"
-            landmarkName = "backToDashboard(_:)"
+            landmarkName = "exportToCSV(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -778,7 +762,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Login/ProfilesViewController.swift"
-            timestampString = "542597806.152422"
+            timestampString = "543224898.398667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -842,7 +826,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Login/ProfilesViewController.swift"
-            timestampString = "542597806.152635"
+            timestampString = "543224898.398809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -858,7 +842,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Login/ProfilesViewController.swift"
-            timestampString = "542597806.152697"
+            timestampString = "543224898.398874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -874,7 +858,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/AppDelegate.swift"
-            timestampString = "542591607.849213"
+            timestampString = "543224160.018248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -906,7 +890,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/AppDelegate.swift"
-            timestampString = "542591607.849305"
+            timestampString = "543224160.018346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -922,7 +906,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/AppDelegate.swift"
-            timestampString = "542591607.8493659"
+            timestampString = "543224160.018416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -1002,13 +986,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/TrainingSetupViewController.swift"
-            timestampString = "540120024.4067841"
+            timestampString = "543224898.3991309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
             endingLineNumber = "146"
-            landmarkName = "saveBaseType(baseType:)"
-            landmarkType = "7">
+            landmarkName = "TrainingSetupViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1018,12 +1002,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/TrainingSetupViewController.swift"
-            timestampString = "540120024.406852"
+            timestampString = "543224898.399199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "saveTrainingType(trainingType:)"
+            landmarkName = "trainingTypePopover(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1034,13 +1018,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Adapt/Training/TrainingSetupViewController.swift"
-            timestampString = "540120024.406914"
+            timestampString = "543224898.399263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "saveLegType(legType:)"
-            landmarkType = "7">
+            landmarkName = "TrainingSetupViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

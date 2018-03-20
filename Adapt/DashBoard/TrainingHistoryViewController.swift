@@ -10,21 +10,25 @@ import Foundation
 import UIKit
 import CoreData
 
-class trainingPagedViewController: UIViewController{
-
+class TrainingHistoryViewController: UIViewController{
     var trainingsList = [Training]()
-
     
+    @IBOutlet weak var target: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+
+    var titleText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTrainings()
-        MainViewController.drawCircle(imageView: self.view?.viewWithTag(1) as! UIImageView)
+        if let unwrappedTitle = titleText {
+            titleLabel.text = unwrappedTitle
+        }
+        MainViewController.drawCircle(imageView: target)
         for training in trainingsList {
-
-            let pointView = UIImageView(frame: CGRect(x: self.view?.viewWithTag(1)?.frame.midX as! CGFloat, y: self.view?.viewWithTag(1)?.frame.midY as! CGFloat, width: 5, height: 5))
-            let pointConstraintX = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.view?.viewWithTag(1), attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-            let pointConstraintY = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: self.view?.viewWithTag(1), attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+            let pointView = UIImageView(frame: CGRect(x: target.frame.midX, y: target.frame.midY, width: 5, height: 5))
+            let pointConstraintX = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+            let pointConstraintY = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
 
             if let biasPoint = training.biasPoint as? CGPoint{
                 pointConstraintX.constant = biasPoint.x * MainViewController.EULER_SCALAR * 0.445714285714286

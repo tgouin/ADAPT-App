@@ -16,17 +16,21 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
                 self.newViewController(difficulty: "easy"),
                 self.newViewController(difficulty: "medium"),
                 self.newViewController(difficulty: "hard")]
-        }() as! [trainingPagedViewController]                               //
+        }() as! [TrainingHistoryViewController]                               //
     
     private func newViewController(difficulty: String) -> UIViewController {
-        return UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "\(difficulty)BaseViewController")
+        let newVC = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "trainingViewController")
+        if let trainingVC = newVC as? TrainingHistoryViewController {
+            trainingVC.titleText = difficulty
+        }
+        return newVC
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
         dataSource = self
-        
+                
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
                                direction: .forward,
@@ -39,7 +43,7 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! trainingPagedViewController) else {  //
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! TrainingHistoryViewController) else {  //
             return nil
         }
         
@@ -58,7 +62,7 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
         
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! trainingPagedViewController) else {
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController as! TrainingHistoryViewController) else {
             return nil
         }
         
@@ -77,20 +81,20 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
     }
     
     
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
-    {
-        if let nextViewController = pendingViewControllers[0] as? trainingPagedViewController {
+    //func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
+    //{
+        //if let nextViewController = pendingViewControllers[0] as? trainingPagedViewController {
             //MainViewController.drawCircle(imageView: (self.view.viewWithTag(1) as! UIImageView)?)
-        }
-    }
+        //}
+    //}
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return orderedViewControllers.count
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first as? trainingPagedViewController,
-            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController as! trainingPagedViewController) else {
+        guard let firstViewController = viewControllers?.first as? TrainingHistoryViewController,
+            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController as! TrainingHistoryViewController) else {
                 return 0
             }
         

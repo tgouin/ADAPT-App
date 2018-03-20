@@ -85,6 +85,7 @@
                                     <constraint firstItem="5Sr-RH-N26" firstAttribute="centerX" secondItem="RbS-5a-51D" secondAttribute="centerX" id="rG7-u3-4A9"/>
                                     <constraint firstItem="5Sr-RH-N26" firstAttribute="top" secondItem="oqU-nJ-Q5P" secondAttribute="bottom" constant="5" id="zdu-Nl-AqV"/>
                                 </constraints>
+                                <size key="customSize" width="200" height="200"/>
                             </collectionViewCell>
                         </cells>
                         <connections>

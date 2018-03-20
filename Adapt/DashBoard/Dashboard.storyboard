@@ -143,14 +143,7 @@
         <!--Pages View Controller-->
         <scene sceneID="t0i-vK-NkN">
             <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gWi-0d-rfn" customClass="PagesViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="8LD-il-dPK" kind="show" id="lYl-3u-EvM"/>
-                        <segue destination="3E2-Wm-JS4" kind="show" id="6F0-0D-WEc"/>
-                        <segue destination="qpK-kg-T1U" kind="show" id="mlK-yj-uIw"/>
-                        <segue destination="W2C-wM-hnt" kind="show" id="xr7-aX-dau"/>
-                    </connections>
-                </pageViewController>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="gWi-0d-rfn" customClass="PagesViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5P9-go-8IR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1823" y="-54"/>
@@ -210,8 +203,8 @@
                         <viewLayoutGuide key="safeArea" id="DCX-Qy-Yt7"/>
                     </view>
                     <connections>
-                        <segue destination="chy-5C-CiM" kind="presentation" identifier="connectToSensor" id="gaY-PM-ivK"/>
-                        <segue destination="jxW-oH-heK" kind="presentation" identifier="showAngleValidation" id="cJ7-f0-ais"/>
+                        <segue destination="chy-5C-CiM" kind="show" identifier="connectToSensor" id="gaY-PM-ivK"/>
+                        <segue destination="jxW-oH-heK" kind="show" identifier="showAngleValidation" id="cJ7-f0-ais"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gTQ-8q-0Xx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,7 +222,7 @@
         <!--Angle Validation View Controller-->
         <scene sceneID="3eJ-zQ-q0t">
             <objects>
-                <viewController storyboardIdentifier="angleValidationViewController" id="jxW-oH-heK" customClass="angleValidationViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="angleValidationViewController" id="jxW-oH-heK" customClass="AngleValidationViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hhj-b7-iL1">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -314,162 +307,55 @@
             </objects>
             <point key="canvasLocation" x="313" y="424"/>
         </scene>
-        <!--Training Paged View Controller-->
+        <!--Training History View Controller-->
         <scene sceneID="0Tz-Y4-HRc">
             <objects>
-                <viewController storyboardIdentifier="overallBaseViewController" id="8LD-il-dPK" customClass="trainingPagedViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="trainingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8LD-il-dPK" customClass="TrainingHistoryViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p5I-uJ-Zdv">
                         <rect key="frame" x="0.0" y="0.0" width="714" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Training History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVn-Xe-jlg">
-                                <rect key="frame" x="262" y="35" width="190" height="30"/>
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-4f-0kQ">
+                                <rect key="frame" x="51" y="131" width="350" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4lQ-Z2-moG"/>
+                                    <constraint firstAttribute="width" constant="350" id="3aN-Hr-KUK"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="6Q9-0A-9gc"/>
+                                    <constraint firstAttribute="height" constant="350" id="Bee-fV-M4w"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="d0l-mi-ASH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPL-KB-QB2">
+                                <rect key="frame" x="20" y="51" width="674" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="674" id="22h-A6-6B6"/>
+                                    <constraint firstAttribute="height" constant="30" id="ylt-Sm-UZk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NBA-BucksRegular" family="NBA Bucks" pointSize="30"/>
                                 <color key="textColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFe-cA-pPJ">
-                                <rect key="frame" x="40" y="135" width="350" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="2q4-fz-85A"/>
-                                    <constraint firstAttribute="width" constant="350" id="PWa-o6-tnY"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QVn-Xe-jlg" firstAttribute="top" secondItem="veA-YS-CeR" secondAttribute="top" constant="15" id="6G9-od-s6b"/>
-                            <constraint firstItem="fFe-cA-pPJ" firstAttribute="leading" secondItem="p5I-uJ-Zdv" secondAttribute="leadingMargin" constant="20" id="9Hk-1X-8Jp"/>
-                            <constraint firstItem="QVn-Xe-jlg" firstAttribute="centerX" secondItem="p5I-uJ-Zdv" secondAttribute="centerX" id="kT2-dR-vvj"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="fFe-cA-pPJ" secondAttribute="bottom" constant="85" id="snp-WG-YAd"/>
+                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="leading" secondItem="veA-YS-CeR" secondAttribute="leading" constant="51" id="2eL-qi-fb9"/>
+                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="top" secondItem="zPL-KB-QB2" secondAttribute="bottom" constant="50" id="P1x-db-WEs"/>
+                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="top" secondItem="zPL-KB-QB2" secondAttribute="bottom" constant="50" id="dpL-wi-uen"/>
+                            <constraint firstItem="zPL-KB-QB2" firstAttribute="top" secondItem="veA-YS-CeR" secondAttribute="top" constant="31" id="jWe-SG-MIS"/>
+                            <constraint firstItem="zPL-KB-QB2" firstAttribute="centerX" secondItem="p5I-uJ-Zdv" secondAttribute="centerX" id="kkV-94-KTK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="veA-YS-CeR"/>
                     </view>
                     <navigationItem key="navigationItem" id="g0Y-1K-Vt1"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="714" height="570"/>
+                    <connections>
+                        <outlet property="target" destination="xCj-4f-0kQ" id="bfc-7z-5f2"/>
+                        <outlet property="titleLabel" destination="zPL-KB-QB2" id="uOG-eQ-S5j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocj-g6-0tp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="779.85611510791375" y="659.89208633093529"/>
-        </scene>
-        <!--Training Paged View Controller-->
-        <scene sceneID="Axt-q2-23v">
-            <objects>
-                <viewController storyboardIdentifier="easyBaseViewController" id="3E2-Wm-JS4" customClass="trainingPagedViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ri2-qk-9IY">
-                        <rect key="frame" x="0.0" y="0.0" width="714" height="570"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy Base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoX-ao-G88">
-                                <rect key="frame" x="297.5" y="35" width="119.5" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="HhT-wG-Z2h"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NBA-BucksRegular" family="NBA Bucks" pointSize="30"/>
-                                <color key="textColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W1t-Bf-UIw">
-                                <rect key="frame" x="40" y="135" width="350" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="bYo-3u-jpN"/>
-                                    <constraint firstAttribute="height" constant="350" id="cmY-T1-LMV"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="HoX-ao-G88" firstAttribute="top" secondItem="DqG-qD-tdg" secondAttribute="top" constant="15" id="0jj-Wu-s5f"/>
-                            <constraint firstItem="W1t-Bf-UIw" firstAttribute="leading" secondItem="ri2-qk-9IY" secondAttribute="leadingMargin" constant="20" id="O6S-X1-tsg"/>
-                            <constraint firstItem="HoX-ao-G88" firstAttribute="centerX" secondItem="ri2-qk-9IY" secondAttribute="centerX" id="W6S-0s-V7u"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="W1t-Bf-UIw" secondAttribute="bottom" constant="85" id="Xhq-zu-Lmy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="DqG-qD-tdg"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bhv-Mq-LaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1456" y="658"/>
-        </scene>
-        <!--Training Paged View Controller-->
-        <scene sceneID="8sY-55-Ltv">
-            <objects>
-                <viewController storyboardIdentifier="mediumBaseViewController" id="qpK-kg-T1U" customClass="trainingPagedViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zOR-7y-SiE">
-                        <rect key="frame" x="0.0" y="0.0" width="714" height="570"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium Base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeC-it-Cjr">
-                                <rect key="frame" x="286.5" y="35" width="141" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fkV-s5-JQM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NBA-BucksRegular" family="NBA Bucks" pointSize="30"/>
-                                <color key="textColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0d4-1O-4Db">
-                                <rect key="frame" x="40" y="135" width="350" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="Azg-lc-Vg2"/>
-                                    <constraint firstAttribute="height" constant="350" id="FKK-To-zwn"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="CeC-it-Cjr" firstAttribute="centerX" secondItem="zOR-7y-SiE" secondAttribute="centerX" id="1W4-sB-8pX"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="0d4-1O-4Db" secondAttribute="bottom" constant="85" id="V1P-wY-SbD"/>
-                            <constraint firstItem="CeC-it-Cjr" firstAttribute="top" secondItem="wXv-cL-Az1" secondAttribute="top" constant="15" id="bpT-mC-P1t"/>
-                            <constraint firstItem="0d4-1O-4Db" firstAttribute="leading" secondItem="zOR-7y-SiE" secondAttribute="leadingMargin" constant="20" id="mlY-Om-2wU"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="wXv-cL-Az1"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="znN-5L-NIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2139" y="656"/>
-        </scene>
-        <!--Training Paged View Controller-->
-        <scene sceneID="a0a-fs-spN">
-            <objects>
-                <viewController storyboardIdentifier="hardBaseViewController" id="W2C-wM-hnt" customClass="trainingPagedViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5CW-m9-jpE">
-                        <rect key="frame" x="0.0" y="0.0" width="714" height="570"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hard Base" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwf-bj-K0e">
-                                <rect key="frame" x="296.5" y="35" width="121" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Zb6-Il-F0F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NBA-BucksRegular" family="NBA Bucks" pointSize="30"/>
-                                <color key="textColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Cb-r4-QCi">
-                                <rect key="frame" x="40" y="135" width="350" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="2S7-dK-Yfi"/>
-                                    <constraint firstAttribute="height" constant="350" id="Khz-O1-F47"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="1Cb-r4-QCi" firstAttribute="leading" secondItem="5CW-m9-jpE" secondAttribute="leadingMargin" constant="20" id="SAd-qb-fxH"/>
-                            <constraint firstItem="Lwf-bj-K0e" firstAttribute="top" secondItem="9nY-ZX-TgU" secondAttribute="top" constant="15" id="g0C-pO-9HR"/>
-                            <constraint firstItem="Lwf-bj-K0e" firstAttribute="centerX" secondItem="5CW-m9-jpE" secondAttribute="centerX" id="hcM-cD-8sc"/>
-                            <constraint firstAttribute="bottom" secondItem="1Cb-r4-QCi" secondAttribute="bottom" constant="85" id="hwE-xb-D4B"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9nY-ZX-TgU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="klw-jx-6uo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2820" y="656"/>
+            <point key="canvasLocation" x="1821.5827338129498" y="357.73381294964031"/>
         </scene>
     </scenes>
     <resources>

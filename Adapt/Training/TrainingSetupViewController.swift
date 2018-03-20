@@ -31,7 +31,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     var baseType: BaseType?
     var trainingType: TrainingType?
     var legType: LegType?
-    var testOrTraining: TestOrTrainingType?
+    var assessmentType: AssessmentType?
     let date = Date()
     var duration: Int32?
     
@@ -44,7 +44,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     @IBAction func startTraining(_ sender: Any) {
         var canContinue = true
         
-        if let _ = testOrTraining {} else {
+        if let _ = assessmentType {} else {
             testOrTrainingSelection.text = "Please select"
             testOrTrainingSelection.textColor = UIColor.red
             canContinue = false
@@ -84,7 +84,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         newTraining.baseType = Int16(baseType!.hashValue)
         newTraining.legType = Int16(legType!.hashValue)
         newTraining.trainingType = Int16(trainingType!.hashValue)
-        newTraining.testVtraining = Int16(testOrTraining!.hashValue)
+        newTraining.assessmentType = Int16(assessmentType!.hashValue)
         newTraining.duration = duration!
         newTraining.dateTime = date
         
@@ -157,7 +157,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     }
     
     @IBAction func testOrTrainingPopover(_ sender: UIButton) {
-        launchPopover(optionType: OptionType.TestOrTraining, sender: sender)
+        launchPopover(optionType: OptionType.Assessment, sender: sender)
     }
     
     func saveBaseType(baseType: BaseType) {
@@ -178,9 +178,9 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         legTypeSelection.textColor = UIColor.white
     }
     
-    func saveTestOrTraining(testOrTraining: TestOrTrainingType) {
-        self.testOrTraining = testOrTraining
-        testOrTrainingSelection.text = TestOrTrainingType.toString(testOrTrainingType: testOrTraining)
+    func saveAssessmentType(assessmentType: AssessmentType) {
+        self.assessmentType = assessmentType
+        testOrTrainingSelection.text = AssessmentType.toString(assessmentType: assessmentType)
         testOrTrainingSelection.textColor = UIColor.white
     }
     
