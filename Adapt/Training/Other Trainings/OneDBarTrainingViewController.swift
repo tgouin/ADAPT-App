@@ -16,6 +16,7 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var barRectView: UIImageView!
     @IBOutlet weak var pointY: NSLayoutConstraint!
     @IBOutlet weak var pointX: NSLayoutConstraint!
+    @IBOutlet weak var sensorDataView: UITextView!
     
     static var EULER_SCALAR: CGFloat = 16
     var tareOffset: CGPoint = CGPoint(x: 0, y: 0)
@@ -63,35 +64,36 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
                         
                         if (self.timerRunning) {
                             self.lastEuler = euler
-                            
+                            var trainingString = ""
                             if self.flexion{
                                 let newY = (-CGFloat(euler.roll) * MainViewController.EULER_SCALAR - self.tareOffsetX) / MainViewController.EULER_SCALAR
                                 self.pointY.constant = newY * MainViewController.EULER_SCALAR
-                                //let rollString = String(format: "%.1f", newY)
-                                //var trainingString = ""
                                 self.runningTotal += newY
                                 self.data.append(newY)
-                                
+   
+                                let pitchString = String(format: "%.1f", newY)
+                                let average = self.getAverage()
+                                let averageString = String(format: "%.1f", average)
                                 let score = self.getScore(x: 0, y: newY)
+                                
+                                trainingString = self.timerRunning ? "\nAverage Y: \(averageString)\nScore: \(score)" : ""
+                                self.sensorDataView.text = "\nY: \(pitchString)°\(trainingString)"
                             }
                             else{
                                 let newX = -(-CGFloat(euler.pitch) * MainViewController.EULER_SCALAR - self.tareOffsetY) / MainViewController.EULER_SCALAR
                                 self.pointY.constant = -newX * MainViewController.EULER_SCALAR
-                                //let pitchString = String(format: "%.1f", newX)
                                 self.runningTotal += newX
                                 self.data.append(newX)
-                                //let averageYString = String(format: "%.1f", average.y)
                                 
+                                let rollString = String(format: "%.1f", newX)
+                                let average = self.getAverage()
+                                let averageString = String(format: "%.1f", average)
                                 let score = self.getScore(x: newX, y: 0)
+                                
+                                trainingString = self.timerRunning ? "\nAverage X: \(averageString)\nScore: \(score)" : ""
+                                self.sensorDataView.text = "\nX: \(rollString)°\(trainingString)"
                             }
                             self.totalSamples += 1
-                            
-                            let average = self.getAverage()
-                            let averageString = String(format: "%.1f", average)
-                            //trainingString = self.timerRunning ? "Average: \(averageString)\nScore: \(score)" : ""
-                                
-                                
-                            //self.debugSensorDataView.text = "\nX: \(rollString)°\nY: \(pitchString)°\(trainingString)"
                         }
                         
                         self.view.layoutIfNeeded()
@@ -100,6 +102,19 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
             
         OneDBarTrainingViewController.drawBarRect(imageView: barRectView);
         OneDBarTrainingViewController.drawBar(imageView: barView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.countdownSeconds = 3
+        timerLabel.text = "\(currentTraining!.duration) Seconds"
+        countdownLabel.text = "\(countdownSeconds)"
+        
+        lastEuler = Euler(yaw: 0, pitch: 0, roll: 0)
+        data = []
+        totalSamples = 0
+        runningTotal = 0
+        runningScore = 0
     }
     
     
@@ -170,7 +185,12 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         let viewController = storyBoard.instantiateViewController(withIdentifier: "reviewTrainingViewController") as! ReviewTrainingViewController
         currentTraining?.data = data as NSObject
         currentTraining?.score = Float(getScore(x: 100, y: 100))
-        currentTraining?.biasPoint = getAverage() as NSObject
+        if self.flexion{
+            currentTraining?.biasPoint = CGPoint.init(x: CGFloat(0) , y: getAverage()) as NSObject
+        } else {
+            currentTraining?.biasPoint = CGPoint.init(x: getAverage(), y: CGFloat(0)) as NSObject
+        }
+
         if let _ = currentTraining {
             do {
                 try appDelegate.dataController.managedObjectContext.save()

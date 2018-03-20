@@ -47,7 +47,7 @@ class angleValidationViewController: UIViewController, CLLocationManagerDelegate
             self.tareOffsetX = -CGFloat(lastEuler.roll)
             self.tareOffsetY = -CGFloat(lastEuler.pitch)
             
-            self.instructionLabel.text = "2. Secure the 1D Base to the bottom of the board\nso that the board can be tilted towards and away from the iPad "
+            self.instructionLabel.text = "2. Secure the Medium Base to the bottom of the board "
             self.buttonLabel.setTitle("Done", for: .normal)
             
         case 2:
@@ -65,28 +65,25 @@ class angleValidationViewController: UIViewController, CLLocationManagerDelegate
             self.back.x = -CGFloat(lastEuler.roll)
             self.back.y = -CGFloat(lastEuler.pitch)
             
-            self.instructionLabel.text = "5. Rotate the 1D base 90 degrees\nand secure to the bottom of the board"
-            self.buttonLabel.setTitle("Done", for: .normal)
-            
-        case 5:
-            self.instructionLabel.text = "6. Push board all the way to\nthe left and press 'NEXT'"
+            self.instructionLabel.text = "5. Push board all the way to\nthe left and press 'NEXT'"
             self.buttonLabel.setTitle("Next", for: .normal)
             
-        case 6:
+        case 5:
             self.left.x = -CGFloat(lastEuler.roll)
             self.left.y = -CGFloat(lastEuler.pitch)
             
-            self.instructionLabel.text = "7. Push board all the way to\nthe right and press 'NEXT'"
+            self.instructionLabel.text = "6. Push board all the way to\nthe right and press 'NEXT'"
             self.buttonLabel.setTitle("Next", for: .normal)
             
-        case 7:
+        case 6:
             self.right.x = -CGFloat(lastEuler.roll)
             self.right.y = -CGFloat(lastEuler.pitch)
             
-            self.instructionLabel.text = "Zero Position: (\(self.tareOffsetX),\(self.tareOffsetY)\nForward: (\(self.forward.x),\(self.forward.y)\nBack: (\(self.back.x),\(self.back.y)\nLeft: (\(self.left.x),\(self.left.y)\nRight: (\(self.right.x),\(self.right.y)"
+            
+            self.instructionLabel.text = "Zero Position: (\(String(format: "%.1f", self.tareOffsetX)),\(String(format: "%.1f", self.tareOffsetY)))\nForward: (\(String(format: "%.1f", self.forward.x)),\(String(format: "%.1f", self.forward.y)))\nBack: (\(String(format: "%.1f", self.back.x)),\(String(format: "%.1f", self.back.y)))\nLeft: (\(String(format: "%.1f", self.left.x)),\(String(format: "%.1f", self.left.y)))\nRight: (\(String(format: "%.1f", self.right.x)),\(String(format: "%.1f", self.right.y)))"
             self.buttonLabel.setTitle("Back to Dashboard", for: .normal)
             
-        case 8:
+        case 7:
 
             dismiss(animated: true, completion: nil)
             

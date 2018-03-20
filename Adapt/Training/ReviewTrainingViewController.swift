@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ReviewTrainingViewController: UIViewController{
+class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
     var currentTraining: Training?
     
     @IBOutlet weak var biasPointView: UIImageView!
@@ -18,7 +18,7 @@ class ReviewTrainingViewController: UIViewController{
     @IBOutlet weak var pointViewY: NSLayoutConstraint!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var scoreImage: UIImageView!
-    
+    @IBOutlet weak var trainerNotes: UITextView!
     @IBOutlet weak var biasPointLabel: UILabel!
     
     override func viewDidLoad() {
@@ -41,6 +41,13 @@ class ReviewTrainingViewController: UIViewController{
                 view.layoutIfNeeded()
             }
         }
+        
+        self.trainerNotes.layer.cornerRadius = 10.0
+        self.trainerNotes.layer.borderColor = UIColor.black.cgColor
+        self.trainerNotes.layer.borderWidth = 2
+        self.trainerNotes.textColor = UIColor.lightGray
+        self.trainerNotes.text = "Type Trainer Notes Here"
+        
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
@@ -71,6 +78,23 @@ class ReviewTrainingViewController: UIViewController{
         roundView.layer.addSublayer(circleShape)
         // add subview
         scoreImage.addSubview(roundView)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Type Trainer Notes Here"
+            textView.textColor = UIColor.lightGray
+        }
+        else {
+            self.currentTraining?.notes = self.trainerNotes.text
+        }
     }
     
     @IBAction func exportToCSV(_ sender: Any) {
@@ -113,4 +137,17 @@ class ReviewTrainingViewController: UIViewController{
             }
         })
     }
+    
+    @IBAction func restartTraining(_ sender: Any) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.viewControllers.forEach({ (vc) in
+            if (vc is MainViewController) {
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
+            if (vc is OneDBarTrainingViewController) {
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
+        })
+    }
+    
 }
