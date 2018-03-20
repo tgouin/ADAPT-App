@@ -177,7 +177,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         }
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "reviewTrainingViewController") as! ReviewTrainingViewController
-        currentTraining?.data = data as NSObject
+        let dict = NSMutableArray()
+        for i in 0..<data.count {
+            dict.add([ "x": data[i].x, "y" : data[i].y ])
+        }
+        currentTraining?.data = dict as NSObject
         currentTraining?.score = Float(getScore(x: 100, y: 100))
         currentTraining?.biasPoint = getAverage() as NSObject
         if let _ = currentTraining {

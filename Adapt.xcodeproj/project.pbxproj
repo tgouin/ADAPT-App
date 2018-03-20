@@ -34,6 +34,7 @@
 		7B1EFE6A20182AA200A13158 /* Proxima Nova Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6820182A9200A13158 /* Proxima Nova Semibold.ttf */; };
 		7B1EFE6B20182AA200A13158 /* Proxima Nova Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6620182A9200A13158 /* Proxima Nova Thin.ttf */; };
 		7B1EFE6E2018406900A13158 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1EFE6D2018406900A13158 /* Colors.swift */; };
+		7B3C27CC2061161F008524C8 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3C27CB2061161F008524C8 /* DateUtils.swift */; };
 		7B86607020573AEA00ABA566 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B86606F20573AEA00ABA566 /* APIController.swift */; };
 		7B934FAF2030D46A0072642E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B934FAE2030D46A0072642E /* DataController.swift */; };
 		7B934FB3203102B50072642E /* BaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B934FB2203102B50072642E /* BaseType.swift */; };
@@ -99,6 +100,7 @@
 		7B1EFE6620182A9200A13158 /* Proxima Nova Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Thin.ttf"; sourceTree = "<group>"; };
 		7B1EFE6820182A9200A13158 /* Proxima Nova Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Semibold.ttf"; sourceTree = "<group>"; };
 		7B1EFE6D2018406900A13158 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7B3C27CB2061161F008524C8 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		7B86606F20573AEA00ABA566 /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		7B934FAE2030D46A0072642E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		7B934FB2203102B50072642E /* BaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseType.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				1C507CBF201E51A0003162C1 /* PlayerUtils.swift */,
+				7B3C27CB2061161F008524C8 /* DateUtils.swift */,
 				7B1EFE6D2018406900A13158 /* Colors.swift */,
 				1C9E2664202BDD6900FC275D /* ExportToCSV.swift */,
 			);
@@ -553,6 +556,7 @@
 				1CAC489D204737C200B80BF2 /* AngleValidationViewController.swift in Sources */,
 				7B934FB3203102B50072642E /* BaseType.swift in Sources */,
 				7B934FB7203103580072642E /* LegType.swift in Sources */,
+				7B3C27CC2061161F008524C8 /* DateUtils.swift in Sources */,
 				7BBD3165200332BF00C67AB9 /* DeviceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

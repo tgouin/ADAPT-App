@@ -18,16 +18,6 @@ class DashboardViewController: UIViewController {
     
     @IBOutlet weak var pageView: UIView!
     
-    @IBAction func sensorConnect(_ sender: Any) {
-        
-    }
-    
-    @IBAction func startTraining(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "trainingSetupViewController") as! TrainingSetupViewController
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         playerPicture.clipsToBounds = true
@@ -37,6 +27,8 @@ class DashboardViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         guard let playerProfile = self.playerProfile else { return }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.apiController.getTrainings(playerId: playerProfile.id)
         let weight = Double(round(10*playerProfile.weight)/10)
         let details = "#\(playerProfile.number) | \(playerProfile.name!)\nWT: \(weight)\nHT: \(PlayerUtils.getHeightString(height: playerProfile.height))\nPOS: \(playerProfile.position!)"
         let style = NSMutableParagraphStyle()
@@ -78,6 +70,10 @@ class DashboardViewController: UIViewController {
         {
             let vc = segue.destination as? SettingsViewController
             vc?.playerProfile = playerProfile
+        }
+        else if segue.destination is TrainingSetupViewController {
+            let vc = segue.destination as? TrainingSetupViewController
+            vc?.player = playerProfile
         }
     }
 }
