@@ -18,7 +18,6 @@ enum TrainingType: Int {
             return "Target"
         case TrainingType.Bar:
             return "Bar"
-            
         }
         return ""
     }

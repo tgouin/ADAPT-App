@@ -23,5 +23,7 @@ CREATE TABLE IF NOT EXISTS `Training` (
   `legType` int(11) DEFAULT NULL,
   `score` float DEFAULT NULL,
   `trainingType` int(11) DEFAULT NULL,
+  `assessmentType` int(11) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

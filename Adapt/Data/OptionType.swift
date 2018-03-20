@@ -11,5 +11,5 @@ enum OptionType {
     case Base,
     Training,
     Leg,
-    TestOrTraining
+    Assessment
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class angleValidationViewController: UIViewController, CLLocationManagerDelegate {
+class AngleValidationViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var sensorAnglesLabel: UILabel!
     @IBOutlet weak var instructionLabel: UILabel!

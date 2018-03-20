@@ -29,8 +29,8 @@ class TrainingSetupPopoverViewController: UITableViewController{
                 return TrainingType.count()
             case .Leg:
                 return LegType.count()
-            case .TestOrTraining:
-                return TestOrTrainingType.count()
+            case .Assessment:
+                return AssessmentType.count()
             
         }
         return 0
@@ -50,8 +50,8 @@ class TrainingSetupPopoverViewController: UITableViewController{
         case .Leg:
             text = LegType.toString(legType: LegType(rawValue: indexPath.row)!)
             break
-        case .TestOrTraining:
-            text = TestOrTrainingType.toString(testOrTrainingType: TestOrTrainingType(rawValue: indexPath.row)!)
+        case .Assessment:
+            text = AssessmentType.toString(assessmentType: AssessmentType(rawValue: indexPath.row)!)
         }
         
         label.text = text
@@ -74,8 +74,8 @@ class TrainingSetupPopoverViewController: UITableViewController{
         case .Leg:
             delegate?.saveLegType(legType: LegType(rawValue: indexPath.row)!)
             break
-        case .TestOrTraining:
-            delegate?.saveTestOrTraining(testOrTraining: TestOrTrainingType(rawValue: indexPath.row)!)
+        case .Assessment:
+            delegate?.saveAssessmentType(assessmentType: AssessmentType(rawValue: indexPath.row)!)
             break
         }
         dismiss(animated: true, completion: nil)
@@ -89,7 +89,7 @@ protocol SavingViewControllerDelegate{
     func saveBaseType(baseType: BaseType)
     func saveTrainingType(trainingType: TrainingType)
     func saveLegType(legType: LegType)
-    func saveTestOrTraining(testOrTraining: TestOrTrainingType)
+    func saveAssessmentType(assessmentType: AssessmentType)
 }
 
 

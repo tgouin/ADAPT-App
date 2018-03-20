@@ -87,8 +87,18 @@ class BLEDevicesViewController: UIViewController, UITableViewDelegate, UITableVi
         let peripheral = peripherals[indexPath.row]
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.bleController.connect(peripheral: peripheral)
-        dismiss(animated: true, completion: nil)
-        //performSegue(withIdentifier: "unwindToMain", sender: nil)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        var found = false
+        var dashboardVC: DashboardViewController?
+        self.navigationController?.viewControllers.forEach({ (vc) in
+            if (vc is CalibrationViewController) {
+                found = true
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
+        })
+        if !found {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }

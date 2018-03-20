@@ -8,22 +8,22 @@
 
 import Foundation
 
-enum TestOrTrainingType: Int {
-    case Test = 0,
-    Training;
+enum AssessmentType: Int {
+    case Training = 0,
+    Test;
     
-    static func toString(testOrTrainingType: TestOrTrainingType) -> String{
-        switch(testOrTrainingType) {
-        case TestOrTrainingType.Test:
-            return "Test"
-        case TestOrTrainingType.Training:
+    static func toString(assessmentType: AssessmentType) -> String{
+        switch(assessmentType) {
+        case AssessmentType.Training:
             return "Training"
+        case AssessmentType.Test:
+            return "Test"
         }
         return ""
     }
     
     static func count() -> Int {
         // NOTE: this should be the last enum value and will need to be updated with changes
-        return TestOrTrainingType.Training.hashValue + 1
+        return AssessmentType.Test.hashValue + 1
     }
 }
