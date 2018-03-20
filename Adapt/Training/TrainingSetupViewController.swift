@@ -12,7 +12,7 @@ import CoreData
 
 class TrainingSetupViewController: UIViewController, UIPopoverPresentationControllerDelegate, SavingViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
-    
+    @IBOutlet weak var testOrTrainingCell: TrainingSetupCell!
     @IBOutlet weak var baseTypeCell: TrainingSetupCell!
     @IBOutlet weak var trainingTypeCell: TrainingSetupCell!
     @IBOutlet weak var legCell: TrainingSetupCell!
@@ -20,6 +20,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var durationCell: TrainingSetupCell!
     @IBOutlet weak var startTrainingButton: UIButton!
     
+    @IBOutlet weak var testOrTrainingSelection: UILabel!
     @IBOutlet weak var baseTypeSelection: UILabel!
     @IBOutlet weak var trainingTypeSelection: UILabel!
     @IBOutlet weak var legTypeSelection: UILabel!
@@ -30,6 +31,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     var baseType: BaseType?
     var trainingType: TrainingType?
     var legType: LegType?
+    var testOrTraining: TestOrTrainingType?
     let date = Date()
     var duration: Int32?
     
@@ -41,6 +43,13 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     
     @IBAction func startTraining(_ sender: Any) {
         var canContinue = true
+        
+        if let _ = testOrTraining {} else {
+            testOrTrainingSelection.text = "Please select"
+            testOrTrainingSelection.textColor = UIColor.red
+            canContinue = false
+        }
+        
         if let _ = baseType {} else {
             baseTypeSelection.text = "Please select"
             baseTypeSelection.textColor = UIColor.red
@@ -75,6 +84,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         newTraining.baseType = Int16(baseType!.hashValue)
         newTraining.legType = Int16(legType!.hashValue)
         newTraining.trainingType = Int16(trainingType!.hashValue)
+        newTraining.testVtraining = Int16(testOrTraining!.hashValue)
         newTraining.duration = duration!
         newTraining.dateTime = date
         
@@ -146,6 +156,10 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         launchPopover(optionType: OptionType.Leg, sender: sender)
     }
     
+    @IBAction func testOrTrainingPopover(_ sender: UIButton) {
+        launchPopover(optionType: OptionType.TestOrTraining, sender: sender)
+    }
+    
     func saveBaseType(baseType: BaseType) {
         self.baseType = baseType
         baseTypeSelection.text = BaseType.toString(baseType: baseType)
@@ -164,28 +178,11 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         legTypeSelection.textColor = UIColor.white
     }
     
-    
-//    func saveText(strText: String, setupParam: Int) {
-//        switch setupParam{
-//        case 1:
-//            baseType = strText
-//            baseTypeSelection.text = strText
-//            baseTypeSelection.textColor = UIColor.white
-//            break
-//        case 2:
-//            trainingType = strText
-//            trainingTypeSelection.text = strText
-//            trainingTypeSelection.textColor = UIColor.white
-//            break
-//        case 3:
-//            legType = strText
-//            legTypeSelection.text = strText
-//            legTypeSelection.textColor = UIColor.white
-//            break
-//        default:
-//            break
-//        }
-//    }
+    func saveTestOrTraining(testOrTraining: TestOrTrainingType) {
+        self.testOrTraining = testOrTraining
+        testOrTrainingSelection.text = TestOrTrainingType.toString(testOrTrainingType: testOrTraining)
+        testOrTrainingSelection.textColor = UIColor.white
+    }
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none

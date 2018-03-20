@@ -123,6 +123,18 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         MainViewController.drawPoint(imageView: pointView)
 
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.countdownSeconds = 3
+        timerLabel.text = "\(currentTraining!.duration) Seconds"
+        countdownLabel.text = "\(countdownSeconds)"
+        
+        lastEuler = Euler(yaw: 0, pitch: 0, roll: 0)
+        data = []
+        totalSamples = 0
+        runningTotal = CGPoint(x: 0, y: 0)
+        runningScore = 0
+    }
     
     @IBAction func startTraining(_ sender: Any) {
         countdownRunning = true
