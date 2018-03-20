@@ -202,6 +202,130 @@ app.get('/players/create', (req, res) => {
     }})(res));
 });
 
+function createTraining(playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY, callback) {
+    query(`INSERT INTO Training (playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY) 
+    VALUES (${playerId}, "${dateTime}", "${data}", "${notes}", ${score}, ${trainingType}, ${legType}, ${baseType}, ${assessmentType}, ${duration}, ${biasPointX}, ${biasPointY});`, ((playerId)=> {return (err, res, fields) => {
+        if (err) {
+            console.log('Error in createTraining', err);
+            callback(err);
+            return;
+        }
+        console.log(`Training id: ${res.insertId} for playerId: ${playerId} created`);
+        callback(null, res.insertId);
+    }})(playerId));   
+}
+
+app.get('/trainings', (req,res) => {
+    console.log('fetch /trainings');
+    if (!req.query) {
+        sendError(res, 400, 'No query provided');
+        return;
+    }
+    let { playerId } = req.query;
+    if (!playerId) {
+        sendError(res, 400, 'playerId is required');
+        return;
+    }
+    query(`SELECT * FROM Training WHERE playerId = ${playerId} ORDER BY dateTime DESC`, ((res)=> { return (err, results, fields) => {
+        if (err) {
+            console.log('error fetching trainings', err);
+            sendError(res, 500, `Error fetching trainings ${err}`);
+            return;
+        }
+        console.log('trainings', results);
+        res.json(results);
+    }})(res));
+});
+
+app.get('/trainings/create', (req, res) => {
+    console.log('fetch /trainings/create', req.query);
+    if (!req.query) {
+        sendError(res, 400, 'No query provided');
+        return;
+    }
+    let training = req.query;
+    let { playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY } = training;
+    if (!playerId) {
+        sendError(res, 400, 'playerId is required');
+        return;
+    }
+    if (!dateTime) {
+        sendError(res, 400, 'dateTime is required');
+        return;
+    }
+    if (!data) {
+        sendError(res, 400, 'data is required');
+        return;
+    }
+    if (!notes) {
+        sendError(res, 400, 'notes is required');
+        return;
+    }
+    if (!score) {
+        sendError(res, 400, 'score is required');
+        return;
+    }
+    if (!trainingType) {
+        sendError(res, 400, 'trainingType is required');
+        return;
+    }
+    if (!legType) {
+        sendError(res, 400, 'legType is required');
+        return;
+    }
+    if (!baseType) {
+        sendError(res, 400, 'baseType is required');
+        return;
+    }
+    if (!assessmentType) {
+        sendError(res, 400, 'assessmentType is required');
+        return;
+    }
+    if (!duration) {
+        sendError(res, 400, 'duration is required');
+        return;
+    }
+    if (!biasPointX) {
+        sendError(res, 400, 'biasPointX is required');
+        return;
+    }
+    if (!biasPointY) {
+        sendError(res, 400, 'biasPointY is required');
+        return;
+    }
+    createTraining(playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY,((res)=> { return (err, trainingId)=> {
+        if (err) {
+            sendError(res, 400, `Error creating training: ${err}`);
+            return;
+        }
+        res.json({
+            id: trainingId,
+            message: 'Training successfully created'
+        });
+    }})(res));
+});
+
+app.get('/trainings/delete', (req,res) => {
+    console.log('fetch /trainings/delete', req.query);
+    if (!req.query) {
+        sendError(res, 400, 'No query provided');
+        return;
+    }
+    let { id } = req.query;
+    if (!id) {
+        sendError(res, 400, 'Training id is required');
+        return;
+    }
+    query(`DELETE FROM Training WHERE id=${id}`, ((res, id) => { return (err, results, fields) => {
+        if (err) {
+            console.log('error deleting training', err);
+            sendError(res, 500, `Error deleting training ${err}`);
+            return;
+        }
+        res.json({id, message: 'Training successfully deleted'});
+    }})(res, id));
+})
+
 app.listen(3000, () => {
     console.log('Player Training API listening on port 3000!')
     console.log('Quit by pressing Ctrl+C');

@@ -17,6 +17,18 @@ export MYSQL_PASSWORD=<password>
 npm start
 ```
 
+## Endpoints (requirements are URL query parameters)
+Players
+`/players`
+`/players/create` requires `name`, `height`, `weight`, `number`, and `position`
+`/players/edit` requires `id`, and any of: `name`, `height`, `weight`, `number`, and/or `position`
+`/players/delete` requires `id`
+
+Trainings
+`/trainings` requires `playerId`
+`/trainings/create` requires `playerId`, `dateTime`, `data`, `notes`, `score`, `trainingType`, `legType`, `baseType`, `assessmentType`, `duration`, `biasPointX`, and `biasPointY`
+`/trainings/delete` requires `id`
+
 ## To run in the background
 ```
 npm i -g forever
