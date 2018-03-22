@@ -130,6 +130,10 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
 
     
     @IBAction func backToDashboard(_ sender: Any) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let training = currentTraining else { return }
+        training.notes = trainerNotes.text
+        appDelegate.apiController.createTraining(training: training)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.viewControllers.forEach({ (vc) in
             if (vc is DashboardViewController) {

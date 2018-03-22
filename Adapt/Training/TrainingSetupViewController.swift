@@ -27,7 +27,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
     @IBOutlet weak var dateSelection: UILabel!
     @IBOutlet weak var durationSelection: UITextField!
 
-    
+    var player: Player?
     var baseType: BaseType?
     var trainingType: TrainingType?
     var legType: LegType?
@@ -81,6 +81,9 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         //let newTraining = Training(baseType: baseType!, trainingType: trainingType!, legType: legType!, duration: duration!, dateTime: date)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let newTraining = NSEntityDescription.insertNewObject(forEntityName: "Training", into: appDelegate.dataController.managedObjectContext) as! Training
+        if let unwrappedPlayer = player {
+            newTraining.playerId = unwrappedPlayer.id
+        }
         newTraining.baseType = Int16(baseType!.hashValue)
         newTraining.legType = Int16(legType!.hashValue)
         newTraining.trainingType = Int16(trainingType!.hashValue)
