@@ -23,6 +23,7 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let training = currentTraining {
             if (training.score == 100) {
                 scoreLabel.text = "100"
@@ -41,7 +42,7 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
                 view.layoutIfNeeded()
             }
         }
-        
+        self.trainerNotes.delegate = self
         self.trainerNotes.layer.cornerRadius = 10.0
         self.trainerNotes.layer.borderColor = UIColor.black.cgColor
         self.trainerNotes.layer.borderWidth = 2

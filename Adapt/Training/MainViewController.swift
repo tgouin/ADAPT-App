@@ -134,6 +134,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         totalSamples = 0
         runningTotal = CGPoint(x: 0, y: 0)
         runningScore = 0
+        self.pointX.constant = 0
+        self.pointY.constant = 0
     }
     
     @IBAction func startTraining(_ sender: Any) {

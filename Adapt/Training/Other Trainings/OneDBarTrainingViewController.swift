@@ -115,6 +115,8 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         totalSamples = 0
         runningTotal = 0
         runningScore = 0
+        self.pointX.constant = 0
+        self.pointY.constant = 0
     }
     
     

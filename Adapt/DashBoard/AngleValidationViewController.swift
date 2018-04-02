@@ -23,6 +23,8 @@ class AngleValidationViewController: UIViewController, CLLocationManagerDelegate
     
     var tareOffsetX: CGFloat = 0
     var tareOffsetY: CGFloat = 0
+    var newX: CGFloat?
+    var newY: CGFloat?
     var forward: CGPoint = CGPoint(x: 0, y: 0)
     var back: CGPoint = CGPoint(x: 0, y: 0)
     var left: CGPoint = CGPoint(x: 0, y: 0)
@@ -44,8 +46,8 @@ class AngleValidationViewController: UIViewController, CLLocationManagerDelegate
         buttonPressedCount = buttonPressedCount + 1
         switch self.buttonPressedCount {
         case 1:
-            self.tareOffsetX = -CGFloat(lastEuler.roll)
-            self.tareOffsetY = -CGFloat(lastEuler.pitch)
+            self.tareOffsetX = -CGFloat(lastEuler.roll) * CalibrationViewController.EULER_SCALAR
+            self.tareOffsetY = -CGFloat(lastEuler.pitch) * CalibrationViewController.EULER_SCALAR
             
             self.instructionLabel.text = "2. Secure the Medium Base to the bottom of the board "
             self.buttonLabel.setTitle("Done", for: .normal)
@@ -55,32 +57,32 @@ class AngleValidationViewController: UIViewController, CLLocationManagerDelegate
             self.buttonLabel.setTitle("Next", for: .normal)
             
         case 3:
-            self.forward.x = -CGFloat(lastEuler.roll)
-            self.forward.y = -CGFloat(lastEuler.pitch)
+            self.forward.x = self.newX!
+            self.forward.y = self.newY!
             
             self.instructionLabel.text = "4. Push board all the way to\nthe back and press 'NEXT'"
             self.buttonLabel.setTitle("Next", for: .normal)
             
         case 4:
-            self.back.x = -CGFloat(lastEuler.roll)
-            self.back.y = -CGFloat(lastEuler.pitch)
+            self.back.x = self.newX!
+            self.back.y = self.newY!
             
             self.instructionLabel.text = "5. Push board all the way to\nthe left and press 'NEXT'"
             self.buttonLabel.setTitle("Next", for: .normal)
             
         case 5:
-            self.left.x = -CGFloat(lastEuler.roll)
-            self.left.y = -CGFloat(lastEuler.pitch)
+            self.left.x = self.newX!
+            self.left.y = self.newY!
             
             self.instructionLabel.text = "6. Push board all the way to\nthe right and press 'NEXT'"
             self.buttonLabel.setTitle("Next", for: .normal)
             
         case 6:
-            self.right.x = -CGFloat(lastEuler.roll)
-            self.right.y = -CGFloat(lastEuler.pitch)
+            self.right.x = self.newX!
+            self.right.y = self.newY!
             
             
-            self.instructionLabel.text = "Zero Position: (\(String(format: "%.1f", self.tareOffsetX)),\(String(format: "%.1f", self.tareOffsetY)))\nForward: (\(String(format: "%.1f", self.forward.x)),\(String(format: "%.1f", self.forward.y)))\nBack: (\(String(format: "%.1f", self.back.x)),\(String(format: "%.1f", self.back.y)))\nLeft: (\(String(format: "%.1f", self.left.x)),\(String(format: "%.1f", self.left.y)))\nRight: (\(String(format: "%.1f", self.right.x)),\(String(format: "%.1f", self.right.y)))"
+            self.instructionLabel.text = "Forward: (\(String(format: "%.1f", self.forward.x)),\(String(format: "%.1f", self.forward.y)))\nBack: (\(String(format: "%.1f", self.back.x)),\(String(format: "%.1f", self.back.y)))\nLeft: (\(String(format: "%.1f", self.left.x)),\(String(format: "%.1f", self.left.y)))\nRight: (\(String(format: "%.1f", self.right.x)),\(String(format: "%.1f", self.right.y)))"
             self.buttonLabel.setTitle("Back to Dashboard", for: .normal)
             
         case 7:
@@ -121,10 +123,10 @@ class AngleValidationViewController: UIViewController, CLLocationManagerDelegate
                         guard let euler = notification.object as? Euler else { return }
                         self.hasReceivedData = true
                         self.lastEuler = euler
-                        let newX = -CGFloat(euler.roll) * MainViewController.EULER_SCALAR
-                        let newY = -CGFloat(euler.pitch) * MainViewController.EULER_SCALAR
-                        let rollString = String(format: "%.1f", newX / MainViewController.EULER_SCALAR)
-                        let pitchString = String(format: "%.1f", newY / MainViewController.EULER_SCALAR)
+                        self.newX = (-CGFloat(euler.roll) * MainViewController.EULER_SCALAR - self.tareOffsetX) / MainViewController.EULER_SCALAR
+                        self.newY = -(-CGFloat(euler.pitch) * MainViewController.EULER_SCALAR - self.tareOffsetY) / MainViewController.EULER_SCALAR
+                        let rollString = String(format: "%.1f", self.newX!)
+                        let pitchString = String(format: "%.1f", self.newY!)
                         self.sensorAnglesLabel.text = "Sensor Data\nX: \(rollString)°\nY: \(pitchString)°"
                         self.view.layoutIfNeeded()
                         
