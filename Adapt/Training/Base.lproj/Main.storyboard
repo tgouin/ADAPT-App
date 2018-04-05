@@ -373,8 +373,12 @@
                         <viewLayoutGuide key="safeArea" id="sov-dy-9vn"/>
                     </view>
                     <connections>
+                        <outlet property="barHeight" destination="XQK-qc-ejQ" id="xZH-Qt-Kag"/>
+                        <outlet property="barRectHeight" destination="xNM-ts-RX0" id="nZt-WV-1g5"/>
                         <outlet property="barRectView" destination="pxb-pH-aOW" id="BUb-ik-l8T"/>
+                        <outlet property="barRectWidth" destination="2iC-6k-5fs" id="SB9-Hr-BFQ"/>
                         <outlet property="barView" destination="EPZ-Cf-S9w" id="JvH-SH-npd"/>
+                        <outlet property="barWidth" destination="Tmr-Ee-Wd2" id="Z7x-cy-xaA"/>
                         <outlet property="countdownLabel" destination="Fk4-3C-9vP" id="jei-en-Lq6"/>
                         <outlet property="pointX" destination="OA5-Pl-jr3" id="wQC-ND-kQe"/>
                         <outlet property="pointY" destination="oyS-sf-Adm" id="j1j-RT-j5H"/>

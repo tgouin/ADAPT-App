@@ -62,8 +62,7 @@ class TrainingSetupPopoverViewController: UITableViewController{
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         storyBoard.instantiateViewController(withIdentifier: "trainingSetup") as! TrainingSetupViewController
-        
-        //delegate?.saveText(strText: selectedValue, setupParam: setupParam)
+
         switch(optionType) {
         case .Base:
             delegate?.saveBaseType(baseType: BaseType(rawValue: indexPath.row)!)
@@ -85,7 +84,7 @@ class TrainingSetupPopoverViewController: UITableViewController{
 }
 
 protocol SavingViewControllerDelegate{
-//    func saveText(strText: String, setupParam: Int)
+
     func saveBaseType(baseType: BaseType)
     func saveTrainingType(trainingType: TrainingType)
     func saveLegType(legType: LegType)

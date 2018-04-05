@@ -366,9 +366,8 @@
                                 <color key="highlightedColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGr-B7-5KY">
-                                <rect key="frame" x="309" y="721" width="216" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TGr-B7-5KY">
+                                <rect key="frame" x="374.5" y="729" width="85" height="48"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="30"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -381,6 +380,8 @@
                         <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WOM-mn-7DY" firstAttribute="centerX" secondItem="NcE-hh-UNx" secondAttribute="centerX" id="822-ZU-2A7"/>
+                            <constraint firstItem="TGr-B7-5KY" firstAttribute="centerX" secondItem="NcE-hh-UNx" secondAttribute="centerX" id="JMa-Xa-R21"/>
+                            <constraint firstItem="TGr-B7-5KY" firstAttribute="top" secondItem="WOM-mn-7DY" secondAttribute="bottom" constant="150" id="UQg-K9-0wY"/>
                             <constraint firstItem="WOM-mn-7DY" firstAttribute="top" secondItem="asD-s7-vSI" secondAttribute="bottom" constant="120" id="dUo-bW-inm"/>
                             <constraint firstItem="asD-s7-vSI" firstAttribute="top" secondItem="VgU-G5-0ur" secondAttribute="top" constant="52" id="vNb-VW-Y3j"/>
                             <constraint firstItem="asD-s7-vSI" firstAttribute="centerX" secondItem="NcE-hh-UNx" secondAttribute="centerX" id="xSr-WL-5Fg"/>

@@ -17,6 +17,11 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var pointY: NSLayoutConstraint!
     @IBOutlet weak var pointX: NSLayoutConstraint!
     @IBOutlet weak var sensorDataView: UITextView!
+    @IBOutlet weak var barRectWidth: NSLayoutConstraint!
+    @IBOutlet weak var barRectHeight: NSLayoutConstraint!
+    @IBOutlet weak var barWidth: NSLayoutConstraint!
+    @IBOutlet weak var barHeight: NSLayoutConstraint!
+    
     
     static var EULER_SCALAR: CGFloat = 16
     var tareOffset: CGPoint = CGPoint(x: 0, y: 0)
@@ -27,7 +32,7 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     
     var currentTraining: Training?
     var locationManager:CLLocationManager = CLLocationManager()
-    var data: [CGFloat] = []
+    var data: [CGPoint] = []
     
     var timer = Timer()
     var timerSeconds: Int32 = 0
@@ -40,19 +45,33 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var countdownLabel: UILabel!
     
     var totalSamples:Int32 = 0
-    var runningTotal:CGFloat = CGFloat()
+    var runningTotal:CGPoint = CGPoint(x: 0, y: 0)
     var runningScore: CGFloat = 0
     
-    var flexion = false
+    var flexion: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         locationManager.delegate = self
         locationManager.startUpdatingHeading()
+        
         timerLabel.text = "\(currentTraining!.duration) Seconds"
         countdownLabel.text = "\(countdownSeconds)"
         countdownLabel.layer.isHidden = true
+        
+        if self.flexion{
+            barRectWidth.constant = 200
+            barRectHeight.constant = 700
+            barHeight.constant = 10
+            barWidth.constant = 200
+        }
+        else {
+            barRectWidth.constant = 700
+            barRectHeight.constant = 200
+            barHeight.constant = 200
+            barWidth.constant = 10
+        }
         
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Name(rawValue:"DeviceData"),
@@ -66,28 +85,30 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
                             self.lastEuler = euler
                             var trainingString = ""
                             if self.flexion{
-                                let newY = (-CGFloat(euler.roll) * MainViewController.EULER_SCALAR - self.tareOffsetX) / MainViewController.EULER_SCALAR
-                                self.pointY.constant = newY * MainViewController.EULER_SCALAR
-                                self.runningTotal += newY
-                                self.data.append(newY)
+                                let newY = -(-CGFloat(euler.pitch) * MainViewController.EULER_SCALAR - self.tareOffsetY) / MainViewController.EULER_SCALAR
+                                self.pointY.constant = -newY * MainViewController.EULER_SCALAR
+                                self.runningTotal.y += newY
+                                self.runningTotal.x += 0
+                                self.data.append(CGPoint(x: 0, y: newY))
    
                                 let pitchString = String(format: "%.1f", newY)
                                 let average = self.getAverage()
-                                let averageString = String(format: "%.1f", average)
+                                let averageString = String(format: "%.1f", average.y)
                                 let score = self.getScore(x: 0, y: newY)
                                 
                                 trainingString = self.timerRunning ? "\nAverage Y: \(averageString)\nScore: \(score)" : ""
                                 self.sensorDataView.text = "\nY: \(pitchString)°\(trainingString)"
                             }
                             else{
-                                let newX = -(-CGFloat(euler.pitch) * MainViewController.EULER_SCALAR - self.tareOffsetY) / MainViewController.EULER_SCALAR
-                                self.pointY.constant = -newX * MainViewController.EULER_SCALAR
-                                self.runningTotal += newX
-                                self.data.append(newX)
+                                let newX = (-CGFloat(euler.roll) * MainViewController.EULER_SCALAR - self.tareOffsetX) / MainViewController.EULER_SCALAR
+                                self.pointX.constant = newX * MainViewController.EULER_SCALAR
+                                self.runningTotal.y += 0
+                                self.runningTotal.x += newX
+                                self.data.append(CGPoint(x: newX, y: 0))
                                 
                                 let rollString = String(format: "%.1f", newX)
                                 let average = self.getAverage()
-                                let averageString = String(format: "%.1f", average)
+                                let averageString = String(format: "%.1f", average.x)
                                 let score = self.getScore(x: newX, y: 0)
                                 
                                 trainingString = self.timerRunning ? "\nAverage X: \(averageString)\nScore: \(score)" : ""
@@ -113,7 +134,7 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         lastEuler = Euler(yaw: 0, pitch: 0, roll: 0)
         data = []
         totalSamples = 0
-        runningTotal = 0
+        runningTotal = CGPoint(x: 0, y: 0)
         runningScore = 0
         self.pointX.constant = 0
         self.pointY.constant = 0
@@ -141,8 +162,8 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         return currentScore
     }
     
-    func getAverage() -> CGFloat {
-        return CGFloat(runningTotal / CGFloat(totalSamples))
+    func getAverage() -> CGPoint {
+        return CGPoint(x: runningTotal.x / CGFloat(totalSamples), y: runningTotal.y / CGFloat(totalSamples))
     }
     
     @IBAction func startTraining(_ sender: Any) {
@@ -153,7 +174,8 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     
     func trainingStart(){
         timerRunning = true
-        runningTotal = 0
+        runningTotal.x = 0
+        runningTotal.y = 0
         timerSeconds = currentTraining?.duration ?? 0
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateTimerLabel), userInfo: nil, repeats: true)
     }
@@ -185,13 +207,13 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         }
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "reviewTrainingViewController") as! ReviewTrainingViewController
-        currentTraining?.data = data as NSObject
-        currentTraining?.score = Float(getScore(x: 100, y: 100))
-        if self.flexion{
-            currentTraining?.biasPoint = CGPoint.init(x: CGFloat(0) , y: getAverage()) as NSObject
-        } else {
-            currentTraining?.biasPoint = CGPoint.init(x: getAverage(), y: CGFloat(0)) as NSObject
+        let dict = NSMutableArray()
+        for i in 0..<data.count {
+            dict.add([ "x": data[i].x, "y" : data[i].y ])
         }
+        currentTraining?.data = dict as NSObject
+        currentTraining?.score = Float(getScore(x: 100, y: 100))
+        currentTraining?.biasPoint = getAverage() as NSObject
 
         if let _ = currentTraining {
             do {
@@ -202,6 +224,10 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         }
         viewController.currentTraining = currentTraining
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        self.lastHeading = CGFloat(newHeading.magneticHeading) * .pi / 180;
     }
     
     override func didReceiveMemoryWarning() {

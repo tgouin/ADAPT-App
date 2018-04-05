@@ -38,7 +38,7 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
                                completion: nil)
         }
         
-        //MainViewController.drawCircle(imageView: (self.view.viewWithTag(1) as! UIImageView)?)
+
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,

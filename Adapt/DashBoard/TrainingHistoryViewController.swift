@@ -50,7 +50,7 @@ class TrainingHistoryViewController: UIViewController{
     func fetchTrainings() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let trainingsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Training")
-        //trainingsFetch.predicate = NSPredicate(format: "id == %@", <#T##args: CVarArg...##CVarArg#>)
+        //trainingsFetch.predicate = NSPredicate(format: "playerId == %@", <#T##args: CVarArg...##CVarArg#>)
         do {
             let fetchedTrainings = try appDelegate.dataController.managedObjectContext.fetch(trainingsFetch) as! [Training]
             self.trainingsList = fetchedTrainings

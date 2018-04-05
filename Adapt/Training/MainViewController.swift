@@ -174,9 +174,11 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     func trainingEnded() {
         timerRunning = false
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        // I THINK THIS LINE SHOULD BE DELETED *******************************
         if let sensorTile = appDelegate.bleController.sensorTile {
             appDelegate.bleController.centralManager.cancelPeripheralConnection(sensorTile)
         }
+        //**********************************************************************
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "reviewTrainingViewController") as! ReviewTrainingViewController
         let dict = NSMutableArray()
@@ -186,6 +188,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         currentTraining?.data = dict as NSObject
         currentTraining?.score = Float(getScore(x: 100, y: 100))
         currentTraining?.biasPoint = getAverage() as NSObject
+        
+        // DO WE STILL WANT TO SAVE TRAININGS AT THIS STAGE???? *************************
         if let _ = currentTraining {
             do {
                 try appDelegate.dataController.managedObjectContext.save()
@@ -193,6 +197,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
                 print ("failed to save training data")
             }
         }
+        //***********************************************************************
         viewController.currentTraining = currentTraining
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -286,20 +291,6 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         self.rollPointY.constant = 325 * sin(-angle)
         self.view.layoutIfNeeded()
     }
-    
-    //    func randomMotion() {
-    //        DispatchQueue.main.async {
-    //            UIView.animate(withDuration: 1, delay: 0.0, options: [], animations: {
-    //                self.setPointPosition(magnitude: self.getRandomNumber(), angle: self.getRandomNumber() * 2 * CGFloat(Double.pi))
-    //            }, completion: { (finished: Bool) in
-    //                self.randomMotion()
-    //            })
-    //        }
-    //    }
-    //
-    //    func getRandomNumber() -> CGFloat {
-    //        return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
-    //    }
     
     @IBAction func unwindToMainViewController(unwindSegue: UIStoryboardSegue) {
         

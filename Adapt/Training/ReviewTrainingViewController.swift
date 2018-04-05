@@ -31,6 +31,18 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
                 scoreLabel.text = String(training.score)
             }
             drawScore(score: CGFloat(training.score))
+            
+            /*self.navigationController?.viewControllers.forEach({ (vc) in
+                if (vc is MainViewController) {
+                    MainViewController.drawCircle(imageView: biasPointView)
+                    MainViewController.drawPoint(imageView: pointView)
+                }
+                if (vc is OneDBarTrainingViewController) {
+                    OneDBarTrainingViewController.drawBarRect(imageView: biasPointView)
+                    OneDBarTrainingViewController.drawBar(imageView: pointView)
+                }
+            })*/
+            
             MainViewController.drawCircle(imageView: biasPointView)
             MainViewController.drawPoint(imageView: pointView)
             if let biasPoint = training.biasPoint as? CGPoint {
@@ -99,7 +111,11 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
     }
     
     @IBAction func exportToCSV(_ sender: Any) {
-        let fileName = "training.csv"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy'_'HH:mm"
+        let date = formatter.string(from: (currentTraining?.dateTime)!)
+        let player = currentTraining?.playerId
+        let fileName = "Player#\(player!)_Training_\(date).csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         if let unwrappedTraining = currentTraining {
             let csvText = ExportToCSV.trainingToCSV(training: unwrappedTraining)

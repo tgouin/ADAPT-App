@@ -13,16 +13,21 @@ class ExportToCSV{
     
     static func trainingToCSV(training: Training) -> String {
         var csvText: String!
-        csvText = "Base Type,Training Type,Leg Used,Training Duration,Training Date\n"
-        csvText.append("\(BaseType.toString(baseType: BaseType(rawValue: Int(training.baseType))!)),\(TrainingType.toString(trainingType: TrainingType(rawValue: Int(training.trainingType))!)),\(LegType.toString(legType: LegType(rawValue: Int(training.legType))!)),\(training.duration) seconds,\(training.dateTime!)\n")
+        csvText = "Assesment Type,Base Type,Training Type,Leg Used,Training Duration,Training Date\n"
+        csvText.append("\(AssessmentType.toString(assessmentType: AssessmentType(rawValue: Int(training.assessmentType))!)),\(BaseType.toString(baseType: BaseType(rawValue: Int(training.baseType))!)),\(TrainingType.toString(trainingType: TrainingType(rawValue: Int(training.trainingType))!)),\(LegType.toString(legType: LegType(rawValue: Int(training.legType))!)),\(training.duration) seconds,\(training.dateTime!)\n")
         if let biasPoint = training.biasPoint as? CGPoint {
             csvText.append("Bias X Angle,Bias Y Angle,Score\n")
             csvText.append("\(biasPoint.x),\(biasPoint.y),\(training.score)\n")
         }
+        if let notes = training.notes {
+            csvText.append("Trainer Notes\n")
+            csvText.append("\(training.notes!)\n")
+        }
         csvText.append("X Angle,Y Angle\n")
-        if let data = training.data as? [CGPoint] {
-            for dataPoint in data {
-                let newLine = "\(dataPoint.x),\(dataPoint.y)\n"
+        if let data = training.data as? NSArray {
+            for dataPoint in data{
+                
+                let newLine = "\(dataPoint)\n"
                 csvText.append(contentsOf: newLine)
             }
         }

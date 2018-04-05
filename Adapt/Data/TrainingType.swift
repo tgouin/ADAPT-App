@@ -10,20 +10,23 @@ import Foundation
 
 enum TrainingType: Int {
     case Target = 0,
-    Bar;
+    BarFlexion,
+    BarVersion;
     
     static func toString(trainingType: TrainingType) -> String {
         switch(trainingType) {
         case TrainingType.Target:
             return "Target"
-        case TrainingType.Bar:
-            return "Bar"
+        case TrainingType.BarFlexion:
+            return "Bar Front/Back"
+        case TrainingType.BarVersion:
+            return "Bar Left/Right"
         }
         return ""
     }
     
     static func count() -> Int {
         // NOTE: this should be the last enum value and will need to be updated with changes
-        return TrainingType.Bar.hashValue + 1
+        return TrainingType.BarVersion.hashValue + 1
     }
 }

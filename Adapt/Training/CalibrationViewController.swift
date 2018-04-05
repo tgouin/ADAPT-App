@@ -30,14 +30,14 @@ class CalibrationViewController: UIViewController, CLLocationManagerDelegate {
         tareOffsetX = -CGFloat(lastEuler.roll) * CalibrationViewController.EULER_SCALAR
         tareOffsetY = -CGFloat(lastEuler.pitch) * CalibrationViewController.EULER_SCALAR
         
-       /* if (!hasReceivedData) {
+       if (!hasReceivedData) {
             let noDeviceAlert = UIAlertController(title: "Not Connected", message: "Please turn on the device and make sure Bluetooth is enabled", preferredStyle: UIAlertControllerStyle.alert)
             noDeviceAlert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { (alertAction) in
                 noDeviceAlert.dismiss(animated: true, completion: nil)
             }))
             present(noDeviceAlert, animated: true, completion: nil)
             return
-        }*/
+        }
         
         switch currentTraining?.trainingType {
         case Int16(TrainingType.Target.rawValue)?: //Target
@@ -47,14 +47,22 @@ class CalibrationViewController: UIViewController, CLLocationManagerDelegate {
             viewController.tareOffsetY = tareOffsetY
             viewController.currentTraining = currentTraining
             self.navigationController?.pushViewController(viewController, animated: true)
-        case Int16(TrainingType.Bar.rawValue)?: //Bar
+        case Int16(TrainingType.BarFlexion.rawValue)?: //Bar Front/Back
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let viewController = storyBoard.instantiateViewController(withIdentifier: "OneDBarTrainingViewController") as! OneDBarTrainingViewController
             viewController.tareOffsetX = tareOffsetX
             viewController.tareOffsetY = tareOffsetY
             viewController.currentTraining = currentTraining
+            viewController.flexion = true
             self.navigationController?.pushViewController(viewController, animated: true)
-            
+        case Int16(TrainingType.BarVersion.rawValue)?: //Bar Left/Right
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let viewController = storyBoard.instantiateViewController(withIdentifier: "OneDBarTrainingViewController") as! OneDBarTrainingViewController
+            viewController.tareOffsetX = tareOffsetX
+            viewController.tareOffsetY = tareOffsetY
+            viewController.currentTraining = currentTraining
+            viewController.flexion = false
+            self.navigationController?.pushViewController(viewController, animated: true)
         default:
             break
         }
