@@ -13,7 +13,8 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
     
     private(set) lazy var orderedViewControllers: [UIViewController] = {
         return [self.newViewController(difficulty: "overall"),
-                self.newViewController(difficulty: "easy"),
+                self.newViewController(difficulty: "easy eversion/inversion"),
+                self.newViewController(difficulty: "easy dorsiflexion/plantarflexion"),
                 self.newViewController(difficulty: "medium"),
                 self.newViewController(difficulty: "hard")]
         }() as! [TrainingHistoryViewController]                               //

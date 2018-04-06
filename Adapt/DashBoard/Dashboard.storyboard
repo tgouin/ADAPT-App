@@ -49,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tci-TT-qwb">
-                                <rect key="frame" x="329" y="997" width="177" height="41"/>
+                                <rect key="frame" x="328.5" y="997" width="177" height="41"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="24"/>
                                 <state key="normal" title="START TRAINING">
                                     <color key="titleColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -95,10 +95,11 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsD-Xs-Cek">
-                                <rect key="frame" x="60" y="334" width="714" height="570"/>
+                                <rect key="frame" x="67" y="334" width="700" height="570"/>
                                 <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="570" id="MEg-Lm-cnX"/>
+                                    <constraint firstAttribute="width" constant="700" id="awj-Vd-RQc"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="gWi-0d-rfn" kind="embed" id="bN8-b5-W3H"/>
@@ -109,11 +110,11 @@
                         <constraints>
                             <constraint firstItem="CsD-Xs-Cek" firstAttribute="centerX" secondItem="pTT-od-ZTi" secondAttribute="centerX" id="1dk-l6-bas"/>
                             <constraint firstItem="CsD-Xs-Cek" firstAttribute="top" secondItem="ORl-9H-4hS" secondAttribute="bottom" constant="60" id="H0o-Mg-eG5"/>
-                            <constraint firstItem="CsD-Xs-Cek" firstAttribute="leading" secondItem="R3Y-eU-KSq" secondAttribute="leading" constant="60" id="TlX-OW-RGB"/>
                             <constraint firstItem="ORl-9H-4hS" firstAttribute="trailing" secondItem="R3Y-eU-KSq" secondAttribute="trailing" id="UJc-cm-e5K"/>
+                            <constraint firstItem="CsD-Xs-Cek" firstAttribute="centerX" secondItem="pTT-od-ZTi" secondAttribute="centerX" id="YdW-gd-jjB"/>
                             <constraint firstItem="Tci-TT-qwb" firstAttribute="centerX" secondItem="pTT-od-ZTi" secondAttribute="centerX" id="Zfa-lA-UKD"/>
                             <constraint firstItem="ORl-9H-4hS" firstAttribute="leading" secondItem="R3Y-eU-KSq" secondAttribute="leading" id="kSr-kK-30p"/>
-                            <constraint firstItem="R3Y-eU-KSq" firstAttribute="trailing" secondItem="CsD-Xs-Cek" secondAttribute="trailing" constant="60" id="uoA-06-xUN"/>
+                            <constraint firstItem="CsD-Xs-Cek" firstAttribute="centerX" secondItem="pTT-od-ZTi" secondAttribute="centerX" id="tQG-2B-pRf"/>
                             <constraint firstItem="R3Y-eU-KSq" firstAttribute="bottom" secondItem="Tci-TT-qwb" secondAttribute="bottom" constant="10" id="w2p-oP-vEC"/>
                             <constraint firstItem="ORl-9H-4hS" firstAttribute="top" secondItem="R3Y-eU-KSq" secondAttribute="top" id="xlq-bz-bpA"/>
                         </constraints>
@@ -312,22 +313,19 @@
             <objects>
                 <viewController storyboardIdentifier="trainingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8LD-il-dPK" customClass="TrainingHistoryViewController" customModule="Adapt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p5I-uJ-Zdv">
-                        <rect key="frame" x="0.0" y="0.0" width="714" height="570"/>
+                        <rect key="frame" x="0.0" y="0.0" width="700" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-4f-0kQ">
-                                <rect key="frame" x="51" y="131" width="350" height="350"/>
+                                <rect key="frame" x="30" y="190" width="350" height="350"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="3aN-Hr-KUK"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="6Q9-0A-9gc"/>
                                     <constraint firstAttribute="height" constant="350" id="Bee-fV-M4w"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="d0l-mi-ASH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPL-KB-QB2">
-                                <rect key="frame" x="20" y="51" width="674" height="30"/>
+                                <rect key="frame" x="324" y="51" width="52.5" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="674" id="22h-A6-6B6"/>
                                     <constraint firstAttribute="height" constant="30" id="ylt-Sm-UZk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NBA-BucksRegular" family="NBA Bucks" pointSize="30"/>
@@ -337,9 +335,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="leading" secondItem="veA-YS-CeR" secondAttribute="leading" constant="51" id="2eL-qi-fb9"/>
-                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="top" secondItem="zPL-KB-QB2" secondAttribute="bottom" constant="50" id="P1x-db-WEs"/>
-                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="top" secondItem="zPL-KB-QB2" secondAttribute="bottom" constant="50" id="dpL-wi-uen"/>
+                            <constraint firstItem="xCj-4f-0kQ" firstAttribute="leading" secondItem="veA-YS-CeR" secondAttribute="leading" constant="30" id="2eL-qi-fb9"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="xCj-4f-0kQ" secondAttribute="bottom" constant="30" id="HR5-RT-jU7"/>
                             <constraint firstItem="zPL-KB-QB2" firstAttribute="top" secondItem="veA-YS-CeR" secondAttribute="top" constant="31" id="jWe-SG-MIS"/>
                             <constraint firstItem="zPL-KB-QB2" firstAttribute="centerX" secondItem="p5I-uJ-Zdv" secondAttribute="centerX" id="kkV-94-KTK"/>
                         </constraints>
@@ -347,9 +344,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="g0Y-1K-Vt1"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="714" height="570"/>
+                    <size key="freeformSize" width="700" height="570"/>
                     <connections>
                         <outlet property="target" destination="xCj-4f-0kQ" id="bfc-7z-5f2"/>
+                        <outlet property="targetHeight" destination="Bee-fV-M4w" id="HU4-6k-Bu3"/>
+                        <outlet property="targetWidth" destination="3aN-Hr-KUK" id="HtC-Ej-MwP"/>
                         <outlet property="titleLabel" destination="zPL-KB-QB2" id="uOG-eQ-S5j"/>
                     </connections>
                 </viewController>

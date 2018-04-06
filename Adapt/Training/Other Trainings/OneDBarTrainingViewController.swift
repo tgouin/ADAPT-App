@@ -202,9 +202,9 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     func trainingEnded() {
         timerRunning = false
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        if let sensorTile = appDelegate.bleController.sensorTile {
+        /*if let sensorTile = appDelegate.bleController.sensorTile {
             appDelegate.bleController.centralManager.cancelPeripheralConnection(sensorTile)
-        }
+        }*/
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let viewController = storyBoard.instantiateViewController(withIdentifier: "reviewTrainingViewController") as! ReviewTrainingViewController
         let dict = NSMutableArray()
