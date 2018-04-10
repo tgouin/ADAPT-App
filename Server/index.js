@@ -119,6 +119,9 @@ app.get('/players/delete', (req,res) => {
         }
         res.json({id, message: 'Player successfully deleted'});
     }})(res, id));
+    query(`DELETE FROM Training WHERE playerId=${id}`, ((res, id) => { return (err, results, fields) => {
+        console.log('Deleted trainings');
+    }})(res, id));
 })
 
 app.get('/players/edit', (req, res) => {
