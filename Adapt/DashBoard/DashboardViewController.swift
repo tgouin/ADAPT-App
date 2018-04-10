@@ -15,20 +15,38 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var playerPicture: UIImageView!
     @IBOutlet weak var playerBanner: UIView!
     @IBOutlet weak var playerDetails: UILabel!
+    var pagesViewController: PagesViewController?
     
     @IBOutlet weak var pageView: UIView!
     
+    func reloadTrainings() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let playerProfile = self.playerProfile else { return }
+        appDelegate.apiController.getTrainings(playerId: playerProfile.id) {
+            if let pagesView = self.pagesViewController {
+                pagesView.orderedViewControllers.forEach({ (vc) in
+                    if let trainingHistoryVC = vc as? TrainingHistoryViewController {
+                        if trainingHistoryVC.viewIfLoaded != nil {
+                            DispatchQueue.main.async {
+                                trainingHistoryVC.updateLabels()
+                            }
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadTrainings()
         playerPicture.clipsToBounds = true
-        
         self.view.backgroundColor = Colors.goodLandGreen
         self.navigationController?.navigationBar.barTintColor = Colors.goodLandGreen
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         guard let playerProfile = self.playerProfile else { return }
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.apiController.getTrainings(playerId: playerProfile.id)
+        
         let weight = Double(round(10*playerProfile.weight)/10)
         let details = "#\(playerProfile.number) | \(playerProfile.name!)\nWT: \(weight)\nHT: \(PlayerUtils.getHeightString(height: playerProfile.height))\nPOS: \(playerProfile.position!)"
         let style = NSMutableParagraphStyle()
@@ -74,6 +92,11 @@ class DashboardViewController: UIViewController {
         else if segue.destination is TrainingSetupViewController {
             let vc = segue.destination as? TrainingSetupViewController
             vc?.player = playerProfile
+        }
+        else if segue.destination is PagesViewController {
+            let vc = segue.destination as? PagesViewController
+            self.pagesViewController = vc
+            vc?.playerId = playerProfile?.id ?? -1
         }
     }
 }

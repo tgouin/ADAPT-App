@@ -102,7 +102,7 @@
                                     <constraint firstAttribute="width" constant="700" id="awj-Vd-RQc"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="gWi-0d-rfn" kind="embed" id="bN8-b5-W3H"/>
+                                    <segue destination="gWi-0d-rfn" kind="embed" identifier="" id="bN8-b5-W3H"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -316,13 +316,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="700" height="570"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-4f-0kQ">
-                                <rect key="frame" x="30" y="190" width="350" height="350"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="3aN-Hr-KUK"/>
-                                    <constraint firstAttribute="height" constant="350" id="Bee-fV-M4w"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Easy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPL-KB-QB2">
                                 <rect key="frame" x="324" y="51" width="52.5" height="30"/>
                                 <constraints>
@@ -332,13 +325,47 @@
                                 <color key="textColor" red="0.93333333330000001" green="0.88235294119999996" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je8-cy-LGg">
+                                <rect key="frame" x="238" y="227" width="428" height="22"/>
+                                <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shP-Vr-XSa">
+                                <rect key="frame" x="238" y="257" width="428" height="22"/>
+                                <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wv-Qe-Cwe">
+                                <rect key="frame" x="238" y="287" width="428" height="22"/>
+                                <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-4f-0kQ">
+                                <rect key="frame" x="30" y="210" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3aN-Hr-KUK"/>
+                                    <constraint firstAttribute="height" constant="200" id="Bee-fV-M4w"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.039215686270000001" green="0.28627450980000002" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xCj-4f-0kQ" firstAttribute="leading" secondItem="veA-YS-CeR" secondAttribute="leading" constant="30" id="2eL-qi-fb9"/>
+                            <constraint firstItem="veA-YS-CeR" firstAttribute="trailing" secondItem="shP-Vr-XSa" secondAttribute="trailing" constant="34" id="4uU-Me-e5c"/>
                             <constraint firstAttribute="bottomMargin" secondItem="xCj-4f-0kQ" secondAttribute="bottom" constant="30" id="HR5-RT-jU7"/>
+                            <constraint firstItem="shP-Vr-XSa" firstAttribute="leading" secondItem="xCj-4f-0kQ" secondAttribute="trailing" constant="8" id="Ian-rh-UTa"/>
+                            <constraint firstItem="shP-Vr-XSa" firstAttribute="top" secondItem="Je8-cy-LGg" secondAttribute="bottom" constant="8" id="Run-Nm-q0y"/>
+                            <constraint firstItem="Je8-cy-LGg" firstAttribute="leading" secondItem="xCj-4f-0kQ" secondAttribute="trailing" constant="8" id="cjg-nc-6k0"/>
+                            <constraint firstItem="8Wv-Qe-Cwe" firstAttribute="leading" secondItem="xCj-4f-0kQ" secondAttribute="trailing" constant="8" id="e2B-Gq-Cgf"/>
                             <constraint firstItem="zPL-KB-QB2" firstAttribute="top" secondItem="veA-YS-CeR" secondAttribute="top" constant="31" id="jWe-SG-MIS"/>
                             <constraint firstItem="zPL-KB-QB2" firstAttribute="centerX" secondItem="p5I-uJ-Zdv" secondAttribute="centerX" id="kkV-94-KTK"/>
+                            <constraint firstItem="veA-YS-CeR" firstAttribute="trailing" secondItem="8Wv-Qe-Cwe" secondAttribute="trailing" constant="34" id="lIm-sf-mxq"/>
+                            <constraint firstItem="Je8-cy-LGg" firstAttribute="top" secondItem="veA-YS-CeR" secondAttribute="top" constant="207" id="lfP-ic-YSt"/>
+                            <constraint firstItem="8Wv-Qe-Cwe" firstAttribute="top" secondItem="shP-Vr-XSa" secondAttribute="bottom" constant="8" id="n5o-78-btZ"/>
+                            <constraint firstItem="veA-YS-CeR" firstAttribute="trailing" secondItem="Je8-cy-LGg" secondAttribute="trailing" constant="34" id="ot2-dA-Aqf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="veA-YS-CeR"/>
                     </view>
@@ -346,10 +373,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="700" height="570"/>
                     <connections>
+                        <outlet property="biasAverageLabel" destination="shP-Vr-XSa" id="w0Y-jX-ZEl"/>
+                        <outlet property="scoreAverageLabel" destination="Je8-cy-LGg" id="xsL-aS-j9I"/>
                         <outlet property="target" destination="xCj-4f-0kQ" id="bfc-7z-5f2"/>
                         <outlet property="targetHeight" destination="Bee-fV-M4w" id="HU4-6k-Bu3"/>
                         <outlet property="targetWidth" destination="3aN-Hr-KUK" id="HtC-Ej-MwP"/>
                         <outlet property="titleLabel" destination="zPL-KB-QB2" id="uOG-eQ-S5j"/>
+                        <outlet property="trainingCount" destination="8Wv-Qe-Cwe" id="JHb-9J-hR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocj-g6-0tp" userLabel="First Responder" sceneMemberID="firstResponder"/>

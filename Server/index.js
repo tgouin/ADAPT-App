@@ -3,6 +3,7 @@ const json = require('express-json');
 const mysql = require('mysql');
 const fs = require('fs');
 const path = require('path');
+var bodyParser = require('body-parser');
 var loggingEnabled = true;
 var connection = mysql.createConnection({
     host     : 'localhost',
@@ -49,6 +50,18 @@ function runNextQuery() {
     });
 }
 
+String.prototype.escapeSpecialChars = function() {
+    return this.replace(/\\n/g, "\\n")
+               .replace(/\\'/g, "\\'")
+               .replace(/\\"/g, '\\"')
+               .replace(/\\&/g, "\\&")
+               .replace(/\\r/g, "\\r")
+               .replace(/\\t/g, "\\t")
+               .replace(/\\b/g, "\\b")
+               .replace(/\\f/g, "\\f")
+               .replace(/\"/g, "\\\"");
+};
+
 function createPlayer(name, height, weight, number, position, callback) {
     query(`INSERT INTO Player (name, height, weight, number, position) VALUES ("${name}", ${height}, ${weight}, ${number}, "${position}");`, ((name)=> {return (err, res, fields) => {
         if (err) {
@@ -62,12 +75,14 @@ function createPlayer(name, height, weight, number, position, callback) {
 }
 
 function sendError(res, code, message) {
+    console.log(`Error ${code}: ${message}`);
     res.status(code);
     res.send(message);
 }
 
 const app = express();
 app.use(json());
+app.use(bodyParser());
 
 app.get('/', (req, res) => res.sendFile(path.resolve( __dirname, 'index.html' )));
 
@@ -204,7 +219,7 @@ app.get('/players/create', (req, res) => {
 
 function createTraining(playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY, callback) {
     query(`INSERT INTO Training (playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY) 
-    VALUES (${playerId}, "${dateTime}", "${data}", "${notes}", ${score}, ${trainingType}, ${legType}, ${baseType}, ${assessmentType}, ${duration}, ${biasPointX}, ${biasPointY});`, ((playerId)=> {return (err, res, fields) => {
+    VALUES (${playerId}, "${dateTime}", "${JSON.stringify(data).escapeSpecialChars()}", "${notes}", ${score}, ${trainingType}, ${legType}, ${baseType}, ${assessmentType}, ${duration}, ${biasPointX}, ${biasPointY});`, ((playerId)=> {return (err, res, fields) => {
         if (err) {
             console.log('Error in createTraining', err);
             callback(err);
@@ -226,7 +241,7 @@ app.get('/trainings', (req,res) => {
         sendError(res, 400, 'playerId is required');
         return;
     }
-    query(`SELECT * FROM Training WHERE playerId = ${playerId} ORDER BY dateTime DESC`, ((res)=> { return (err, results, fields) => {
+    query(`SELECT id, playerId, dateTime, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY FROM Training WHERE playerId = ${playerId} ORDER BY dateTime DESC`, ((res)=> { return (err, results, fields) => {
         if (err) {
             console.log('error fetching trainings', err);
             sendError(res, 500, `Error fetching trainings ${err}`);
@@ -237,59 +252,81 @@ app.get('/trainings', (req,res) => {
     }})(res));
 });
 
-app.get('/trainings/create', (req, res) => {
-    console.log('fetch /trainings/create', req.query);
+app.get('/training', (req,res) => {
+    console.log('fetch /training');
     if (!req.query) {
         sendError(res, 400, 'No query provided');
         return;
     }
-    let training = req.query;
+    let { id } = req.query;
+    if (!id) {
+        sendError(res, 400, 'id is required');
+        return;
+    }
+    query(`SELECT * FROM Training WHERE id = ${id}`, ((res)=> { return (err, results, fields) => {
+        if (err || results.length != 1) {
+            console.log('error fetching trainings', err);
+            sendError(res, 500, `Error fetching trainings ${err}`);
+            return;
+        }
+        console.log('trainings', results);
+        res.json(results[0]);
+    }})(res));
+});
+
+app.post('/trainings/create', (req, res) => {
+    console.log('post /trainings/create', req.body);
+    if (!req.body) {
+        sendError(res, 400, 'No body provided');
+        return;
+    }
+    let training = req.body;
     let { playerId, dateTime, data, notes, score, trainingType, legType, baseType, assessmentType, duration, biasPointX, biasPointY } = training;
-    if (!playerId) {
+    if (playerId == null) {
         sendError(res, 400, 'playerId is required');
         return;
     }
-    if (!dateTime) {
+    if (dateTime == null) {
         sendError(res, 400, 'dateTime is required');
         return;
     }
-    if (!data) {
+    if (data == null) {
         sendError(res, 400, 'data is required');
         return;
     }
-    if (!notes) {
+    if (notes == null) {
         sendError(res, 400, 'notes is required');
         return;
     }
-    if (!score) {
+    if (score == null) {
         sendError(res, 400, 'score is required');
         return;
     }
-    if (!trainingType) {
+    if (trainingType == null) {
         sendError(res, 400, 'trainingType is required');
         return;
     }
-    if (!legType) {
+    if (legType == null) {
         sendError(res, 400, 'legType is required');
         return;
     }
-    if (!baseType) {
+    if (baseType == null) {
         sendError(res, 400, 'baseType is required');
         return;
     }
-    if (!assessmentType) {
+    if (assessmentType == null) {
         sendError(res, 400, 'assessmentType is required');
         return;
     }
-    if (!duration) {
+    if (duration == null) {
         sendError(res, 400, 'duration is required');
         return;
     }
-    if (!biasPointX) {
+    if (biasPointX == null) {
         sendError(res, 400, 'biasPointX is required');
         return;
     }
-    if (!biasPointY) {
+    if (biasPointY == null) {
         sendError(res, 400, 'biasPointY is required');
         return;
     }

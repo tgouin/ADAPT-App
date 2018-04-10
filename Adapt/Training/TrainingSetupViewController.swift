@@ -83,6 +83,7 @@ class TrainingSetupViewController: UIViewController, UIPopoverPresentationContro
         let newTraining = NSEntityDescription.insertNewObject(forEntityName: "Training", into: appDelegate.dataController.managedObjectContext) as! Training
         if let unwrappedPlayer = player {
             newTraining.playerId = unwrappedPlayer.id
+            print("player id: \(newTraining.playerId)")
         }
         newTraining.baseType = Int16(baseType!.hashValue)
         newTraining.legType = Int16(legType!.hashValue)

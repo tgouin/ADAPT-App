@@ -17,21 +17,23 @@ extension String {
 }
 
 class APIController: NSObject {
-    // static let rootURL = "http://192.168.1.152:3000"
-    static let rootURL = "http://52.53.90.187"
+     static let rootURL = "http://192.168.1.152:3000"
+//    static let rootURL = "http://52.53.90.187"
     
     override init() {
         super.init()
     }
     
-    func createPlayer(player: Player) {
+    func createPlayer(player: Player,onCompletion: @escaping () -> Void) {
         let url = "\(APIController.rootURL)/players/create?name=\(player.name!.url)&number=\(player.number)&position=\(player.position!.url)&height=\(player.height)&weight=\(player.weight)"
         makeHTTPGetRequest(path: url) { (data, error) in
+            onCompletion()
             guard error == nil else {
                 print("Error creating player")
                 return
             }
             print("Player successfully created!")
+            
         }
     }
     
@@ -63,7 +65,7 @@ class APIController: NSObject {
         }
     }
     
-    func getPlayers() {
+    func getPlayers(onCompletion: @escaping () -> Void) {
         let url = "\(APIController.rootURL)/players"
         print(url)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -139,39 +141,64 @@ class APIController: NSObject {
                 print("Unable to save players from server")
             }
             print("got players!!!", players)
+            onCompletion()
         }
     }
     
-    func createTraining(training: Training) {
-        var jsonString: String! = ""
-        if let dictionary = training.data as? NSArray {
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
-                jsonString = String(data: jsonData, encoding: String.Encoding.utf8) as String!
-            } catch {
-                print("error parsing training as json string")
-                return
-            }
-        }
+    func createTraining(training: Training, onCompletion: @escaping () -> Void) {
+//        var jsonString: String! = ""
+//        if let dictionary = training.data as? NSArray {
+//            do {
+//                let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+//                jsonString = String(data: jsonData, encoding: String.Encoding.utf8) as String!
+//            } catch {
+//                print("error parsing training as json string")
+//                return
+//            }
+//        }
         guard let dateTime = training.dateTime else { return }
         let dateString = DateUtils.getMySQLDate(date: dateTime)
         guard let biasPoint = training.biasPoint as? CGPoint else { return }
         let notes = training.notes ?? ""
+        print("training player ID: \(training.playerId)")
         
-        // TODO: data is too large, need to switch to post instead of get. Comment this out once data is well-formed
-        jsonString = "[]"
+        var trainingJSON: [String: Any] = [:];
+        trainingJSON["data"] = training.data
+        trainingJSON["playerId"] = training.playerId
+        trainingJSON["dateTime"] = dateString
+        trainingJSON["notes"] = notes
+        trainingJSON["score"] = training.score
+        trainingJSON["trainingType"] = training.trainingType
+        trainingJSON["baseType"] = training.baseType
+        trainingJSON["legType"] = training.legType
+        trainingJSON["assessmentType"] = training.assessmentType
+        trainingJSON["duration"] = training.duration
+        trainingJSON["biasPointX"] = biasPoint.x
+        trainingJSON["biasPointY"] = biasPoint.y
         
-        let url = "\(APIController.rootURL)/trainings/create?playerId=\(training.playerId)&dateTime=\(dateString.url)&data=\(jsonString.url)&notes=\(notes.url)&score=\(training.score)&trainingType=\(training.trainingType)&baseType=\(training.baseType)&legType=\(training.legType)&assessmentType=\(training.assessmentType)&duration=\(training.duration)&biasPointX=\(biasPoint.x)&biasPointY=\(biasPoint.y)"
-        makeHTTPGetRequest(path: url) { (data, error) in
+        makeHTTPPostRequest(path: "\(APIController.rootURL)/trainings/create", json: trainingJSON) { (json, error) in
+            onCompletion()
             guard error == nil else {
                 print("Error creating training")
                 return
             }
             print("Training successfully created!")
         }
+        
+        // TODO: data is too large, need to switch to post instead of get. Comment this out once data is well-formed
+//        jsonString = "[]"
+//
+//        let url = "\(APIController.rootURL)/trainings/create?playerId=\(training.playerId)&dateTime=\(dateString.url)&data=\(jsonString.url)&notes=\(notes.url)&score=\(training.score)&trainingType=\(training.trainingType)&baseType=\(training.baseType)&legType=\(training.legType)&assessmentType=\(training.assessmentType)&duration=\(training.duration)&biasPointX=\(biasPoint.x)&biasPointY=\(biasPoint.y)"
+//        makeHTTPGetRequest(path: url) { (data, error) in
+//            guard error == nil else {
+//                print("Error creating training")
+//                return
+//            }
+//            print("Training successfully created!")
+//        }
     }
     
-    func getTrainings(playerId: Int32) {
+    func getTrainings(playerId: Int32, onCompletion: @escaping () -> Void) {
         let url = "\(APIController.rootURL)/trainings?playerId=\(playerId)"
         print(url)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -213,7 +240,7 @@ class APIController: NSObject {
                 }
                 
                 training.dateTime = dateTime
-                
+                training.playerId = playerId
                 if let id = dict["id"] as? Int32 {
                     training.id = id
                 }
@@ -269,6 +296,7 @@ class APIController: NSObject {
                 print("Unable to save trainings from server")
             }
             print("got trainings!!!", trainings)
+            onCompletion()
         }
     }
     
@@ -305,4 +333,45 @@ class APIController: NSObject {
         })
         task.resume()
     }
+    
+    func makeHTTPPostRequest(path: String, json: [String:Any], onCompletion: @escaping ServiceResponse) {
+        
+        //create post request
+        let url = URL(string: path)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: json)
+            let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)
+            print("json", jsonString)
+            request.httpBody = jsonString?.data(using: .utf8)
+        } catch {
+            onCompletion(nil, nil)
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                onCompletion(nil, error as? NSError)
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            do {
+            try onCompletion(JSON(data:data), nil)
+            } catch {
+                onCompletion(nil, nil)
+            }
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+    }
 }
+

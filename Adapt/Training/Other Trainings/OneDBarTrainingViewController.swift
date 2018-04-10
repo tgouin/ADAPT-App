@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate {
+class OneDBarTrainingViewController: UIViewController {
     
     @IBOutlet weak var barView: UIImageView!
     @IBOutlet weak var barRectView: UIImageView!
@@ -31,7 +31,7 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     var lastEuler = Euler(yaw: 0, pitch: 0, roll: 0)
     
     var currentTraining: Training?
-    var locationManager:CLLocationManager = CLLocationManager()
+    //var locationManager:CLLocationManager = CLLocationManager()
     var data: [CGPoint] = []
     
     var timer = Timer()
@@ -53,8 +53,8 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        locationManager.delegate = self
-        locationManager.startUpdatingHeading()
+        //locationManager.delegate = self
+        //locationManager.startUpdatingHeading()
         
         timerLabel.text = "\(currentTraining!.duration) Seconds"
         countdownLabel.text = "\(countdownSeconds)"
@@ -225,10 +225,7 @@ class OneDBarTrainingViewController: UIViewController, CLLocationManagerDelegate
         viewController.currentTraining = currentTraining
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.lastHeading = CGFloat(newHeading.magneticHeading) * .pi / 180;
-    }
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

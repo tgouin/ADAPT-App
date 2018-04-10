@@ -19,15 +19,21 @@ npm start
 
 ## Endpoints (requirements are URL query parameters)
 Players
+GET
 `/players`
 `/players/create` requires `name`, `height`, `weight`, `number`, and `position`
 `/players/edit` requires `id`, and any of: `name`, `height`, `weight`, `number`, and/or `position`
 `/players/delete` requires `id`
 
 Trainings
+GET
 `/trainings` requires `playerId`
-`/trainings/create` requires `playerId`, `dateTime`, `data`, `notes`, `score`, `trainingType`, `legType`, `baseType`, `assessmentType`, `duration`, `biasPointX`, and `biasPointY`
+`/training` requires `id`
 `/trainings/delete` requires `id`
+
+POST
+`/trainings/create` requires `playerId`, `dateTime`, `data`, `notes`, `score`, `trainingType`, `legType`, `baseType`, `assessmentType`, `duration`, `biasPointX`, and `biasPointY`
+
 
 ## To run in the background
 ```

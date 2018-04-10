@@ -150,7 +150,12 @@ class ReviewTrainingViewController: UIViewController, UITextViewDelegate{
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         guard let training = currentTraining else { return }
         training.notes = trainerNotes.text
-        appDelegate.apiController.createTraining(training: training)
+        appDelegate.apiController.createTraining(training: training) {
+            appDelegate.apiController.getTrainings(playerId: training.playerId) {
+                let nc = NotificationCenter.default
+                nc.post(name:Notification.Name(rawValue:"TrainingsRetrieved"), object: nil)
+            }
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.viewControllers.forEach({ (vc) in
             if (vc is DashboardViewController) {

@@ -93,7 +93,7 @@ class BLEController: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if var value = characteristic.value {
             let data = NSData(data: value)
-            print("Sensor data: \(value.hexEncodedString())")
+            //print("Sensor data: \(value.hexEncodedString())")
             if value.count == 20 {
                 //parse values
                 var timestamp:UInt16 = 0
@@ -139,7 +139,7 @@ class BLEController: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
                 //                dQk /= BLEController.MAX_VALUE
                 //                dQs /= BLEController.MAX_VALUE
                 //                print("Timestamp: \(timestamp) Qi: \(dQi) Qj: \(dQj) Qk: \(dQk) Qs: \(dQs)")
-                print("Timestamp: \(timestamp) Yaw: \(dYaw) Pitch: \(dPitch) Roll: \(dRoll)")
+                //print("Timestamp: \(timestamp) Yaw: \(dYaw) Pitch: \(dPitch) Roll: \(dRoll)")
                 //let quaternion = Quaternion(x: dQi, y: dQj, z: dQk, w: dQs)
                 //let euler = Utilities.quatToEuler(quat: quaternion)
                 let euler = Euler(yaw: dYaw, pitch: dPitch, roll: dRoll)

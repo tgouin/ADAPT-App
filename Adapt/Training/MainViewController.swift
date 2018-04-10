@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreLocation
+//import CoreLocation
 
-class MainViewController: UIViewController, CLLocationManagerDelegate {
+class MainViewController: UIViewController /*, CLLocationManagerDelegate */{
     @IBOutlet weak var bullseyeView: UIImageView!
     @IBOutlet weak var pointView: UIImageView!
     @IBOutlet weak var pointY: NSLayoutConstraint!
@@ -47,7 +47,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBOutlet weak var debugSensorDataView: UITextView!
-    var locationManager:CLLocationManager = CLLocationManager()
+    //var locationManager:CLLocationManager = CLLocationManager()
     
     func getScore(x: CGFloat, y: CGFloat) -> CGFloat {
         let magnitude = sqrt(x * x + y * y)
@@ -77,8 +77,8 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white 
-        locationManager.delegate = self
-        locationManager.startUpdatingHeading()
+        //locationManager.delegate = self
+        //locationManager.startUpdatingHeading()
         
         timerLabel.text = "\(currentTraining!.duration) Seconds"
         countdownLabel.text = "\(countdownSeconds)"
@@ -206,10 +206,10 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         performSegue(withIdentifier: "connectToSensor2", sender: nil)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        self.lastHeading = CGFloat(newHeading.magneticHeading) * .pi / 180;
-        print("Roll from iPad: \(newHeading.magneticHeading), Roll from WeSU: \(self.lastRoll)")
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//        self.lastHeading = CGFloat(newHeading.magneticHeading) * .pi / 180;
+//        print("Roll from iPad: \(newHeading.magneticHeading), Roll from WeSU: \(self.lastRoll)")
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

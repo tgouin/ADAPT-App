@@ -10,19 +10,21 @@ import Foundation
 import UIKit
 
 class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
-    
+    var playerId: Int32 = -1
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newViewController(difficulty: "overall"),
-                self.newViewController(difficulty: "easy eversion/inversion"),
-                self.newViewController(difficulty: "easy dorsiflexion/plantarflexion"),
-                self.newViewController(difficulty: "medium"),
-                self.newViewController(difficulty: "hard")]
+        return [self.newViewController(trainingType: nil),
+                self.newViewController(trainingType: TrainingType.Target),
+                self.newViewController(trainingType: TrainingType.BarFlexion),
+                self.newViewController(trainingType: TrainingType.BarVersion),
+                ]
         }() as! [TrainingHistoryViewController]                               //
-    
-    private func newViewController(difficulty: String) -> UIViewController {
+    var first: Bool = true
+    private func newViewController(trainingType: TrainingType?) -> UIViewController {
         let newVC = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "trainingViewController")
         if let trainingVC = newVC as? TrainingHistoryViewController {
-            trainingVC.titleText = difficulty
+            trainingVC.titleText = trainingType != nil ? TrainingType.toString(trainingType: trainingType!) : "Overall"
+            trainingVC.trainingType = trainingType
+            trainingVC.playerId = playerId
         }
         return newVC
     }
@@ -38,8 +40,6 @@ class PagesViewController: UIPageViewController, UIPageViewControllerDelegate, U
                                animated: true,
                                completion: nil)
         }
-        
-
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,
