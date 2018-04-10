@@ -326,8 +326,8 @@ app.get('/trainings/delete', (req,res) => {
     }})(res, id));
 })
 
-app.listen(3000, () => {
-    console.log('Player Training API listening on port 3000!')
+app.listen(80, () => {
+    console.log('Player Training API listening on port 80!');
     console.log('Quit by pressing Ctrl+C');
 })
 
