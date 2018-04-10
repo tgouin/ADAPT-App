@@ -17,8 +17,8 @@ extension String {
 }
 
 class APIController: NSObject {
-     static let rootURL = "http://192.168.1.152:3000"
-//    static let rootURL = "http://52.53.90.187"
+//   static let rootURL = "http://192.168.1.152:3000"
+     static let rootURL = "http://52.53.90.187"
     
     override init() {
         super.init()

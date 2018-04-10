@@ -51,18 +51,12 @@ class TrainingHistoryViewController: UIViewController{
         }
         if let trainType = trainingType {
             if trainType == .Target{
-                self.targetWidth.constant = 350
-                self.targetHeight.constant = 350
                 MainViewController.drawCircle(imageView: target)
             }
             else if trainType == .BarFlexion{
-                self.targetWidth.constant = 400
-                self.targetHeight.constant = 400
                 OneDBarTrainingViewController.drawBarRect(imageView: target)
                 
             } else if trainType == .BarVersion {
-                self.targetWidth.constant = 400
-                self.targetHeight.constant = 400
                 OneDBarTrainingViewController.drawBarRect(imageView: target)
                 self.target.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
             }
@@ -72,21 +66,21 @@ class TrainingHistoryViewController: UIViewController{
         }
         
 
-        for training in trainingsList {
-            let pointView = UIImageView(frame: CGRect(x: target.frame.midX, y: target.frame.midY, width: 5, height: 5))
-            let pointConstraintX = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
-            let pointConstraintY = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-
-            if let biasPoint = training.biasPoint as? CGPoint{
-                pointConstraintX.constant = biasPoint.x * MainViewController.EULER_SCALAR * 0.445714285714286
-                pointConstraintY.constant = biasPoint.y * MainViewController.EULER_SCALAR * 0.445714285714286
-            }
-            
-            self.view.addSubview(pointView)
-            self.view.addConstraint(pointConstraintX)
-            self.view.addConstraint(pointConstraintY)
-            MainViewController.drawPoint(imageView: pointView)
-        }
+//        for training in trainingsList {
+//            let pointView = UIImageView(frame: CGRect(x: target.frame.midX, y: target.frame.midY, width: 5, height: 5))
+//            let pointConstraintX = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+//            let pointConstraintY = NSLayoutConstraint(item: pointView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: target, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+//
+//            if let biasPoint = training.biasPoint as? CGPoint{
+//                pointConstraintX.constant = biasPoint.x * MainViewController.EULER_SCALAR * 0.445714285714286
+//                pointConstraintY.constant = biasPoint.y * MainViewController.EULER_SCALAR * 0.445714285714286
+//            }
+//            
+//            self.view.addSubview(pointView)
+//            self.view.addConstraint(pointConstraintX)
+//            self.view.addConstraint(pointConstraintY)
+//            MainViewController.drawPoint(imageView: pointView)
+//        }
         self.view.layoutIfNeeded()
     }
     
