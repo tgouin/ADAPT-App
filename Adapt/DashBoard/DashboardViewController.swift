@@ -88,6 +88,7 @@ class DashboardViewController: UIViewController {
         {
             let vc = segue.destination as? SettingsViewController
             vc?.playerProfile = playerProfile
+            vc?.playerId = playerProfile?.id ?? -1
         }
         else if segue.destination is TrainingSetupViewController {
             let vc = segue.destination as? TrainingSetupViewController

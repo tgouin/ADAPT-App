@@ -11,6 +11,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     var playerProfile: Player?
+    var playerId: Int32 = -1
     
     
     @IBAction func connectToSensor(_ sender: Any) {
@@ -19,7 +20,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func exportPlayerProfile(_ sender: Any) {
-        let fileName = "player.csv"
+        let playerName = playerProfile?.name
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy'_'HH:mm"
+        let dateFormatted = formatter.string(from: date)
+        let fileName = "\(playerName!)_\(dateFormatted).csv"
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         if let unwrappedPlayer = playerProfile {
             let csvText = ExportToCSV.playerToCSV(player: unwrappedPlayer)

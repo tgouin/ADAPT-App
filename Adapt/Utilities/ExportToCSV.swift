@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ExportToCSV{
     
@@ -23,13 +24,16 @@ class ExportToCSV{
             csvText.append("Trainer Notes\n")
             csvText.append("\(training.notes!)\n")
         }
-        csvText.append("X Angle,Y Angle\n")
         if let data = training.data as? NSArray {
+            csvText.append("X Angle,Y Angle\n")
             for dataPoint in data{
                 
                 let newLine = "\(dataPoint)\n"
                 csvText.append(contentsOf: newLine)
             }
+        }
+        else {
+            csvText.append("No Training Data availible\n")
         }
         
         return csvText
@@ -38,21 +42,35 @@ class ExportToCSV{
     
     static func playerToCSV(player:Player) -> String {
         var csvText: String!
-        csvText = "Name, Number,Height,Weight,Position\n"
-        csvText.append("\(player.name),\(player.number),\(player.height),\(player.weight),\(player.position!)\n")
-//        csvText.append("Easy Base Trainings\n")
-//        let easy = player.id
-//        csvText.append(trainingToCSV(training: easy!))
+        var trainingsList = fetchTrainingsList(playerID: player.id)
         
-        /*csvText.append("Medium Base Trainings\n")
-        for medium in player.mediumBase{
-            csvText.append(trainingToCSV(training: medium))
+        csvText = "Name, Number,Height,Weight,Position,Player ID\n"
+        csvText.append("\(player.name!),\(player.number),\(player.height),\(player.weight),\(player.position!),\(player.id)\n")
+        
+        if trainingsList.count == 0 {
+            csvText.append("No trainings recorded for player# \(player.id)\n")
         }
-        csvText.append("Hard Base Trainings\n")
-        for hard in player.hardBase{
-            csvText.append(trainingToCSV(training: hard))
-        }*/
+        else {
+            for training in trainingsList {
+                let trainingID = training.id
+                csvText.append("TRAINING # \(trainingID)\n")
+                csvText.append(trainingToCSV(training: training))
+            }
+        }
+
         return csvText
+    }
+    
+    static func fetchTrainingsList(playerID: Int32) -> [Training] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let trainingsFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Training")
+        trainingsFetch.predicate = NSPredicate(format: "playerId == %@", NSNumber(value: playerID))
+        do {
+            let fetchedTrainings = try appDelegate.dataController.managedObjectContext.fetch(trainingsFetch) as! [Training]
+            return fetchedTrainings
+        } catch {
+            fatalError("Failed to fetch players: \(error)")
+        }
     }
     
     
