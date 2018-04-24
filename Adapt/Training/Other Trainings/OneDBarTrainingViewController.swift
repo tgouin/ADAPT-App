@@ -21,6 +21,7 @@ class OneDBarTrainingViewController: UIViewController {
     @IBOutlet weak var barRectHeight: NSLayoutConstraint!
     @IBOutlet weak var barWidth: NSLayoutConstraint!
     @IBOutlet weak var barHeight: NSLayoutConstraint!
+    @IBOutlet weak var startTrainingButton: UIButton!
     
     
     static var EULER_SCALAR: CGFloat = 16
@@ -138,6 +139,7 @@ class OneDBarTrainingViewController: UIViewController {
         runningScore = 0
         self.pointX.constant = 0
         self.pointY.constant = 0
+        self.startTrainingButton.isEnabled = true
     }
     
     
@@ -170,6 +172,7 @@ class OneDBarTrainingViewController: UIViewController {
         countdownRunning = true
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateCountdownLabel), userInfo: nil, repeats: true)
         countdownLabel.layer.isHidden = false
+        self.startTrainingButton.isEnabled = false
     }
     
     func trainingStart(){

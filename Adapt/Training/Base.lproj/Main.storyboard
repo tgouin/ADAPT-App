@@ -289,6 +289,7 @@
                         <outlet property="rollPointView" destination="eOU-XE-0An" id="oiq-NW-D6R"/>
                         <outlet property="rollPointX" destination="Twq-D3-ucE" id="4N1-00-HBu"/>
                         <outlet property="rollPointY" destination="ZTW-XS-Io4" id="9vU-tD-Xxr"/>
+                        <outlet property="startTrainingButton" destination="OIY-vh-99A" id="WlN-Ae-2hB"/>
                         <outlet property="timerLabel" destination="V21-M6-yLh" id="DhH-EX-Kwl"/>
                     </connections>
                 </viewController>
@@ -383,6 +384,7 @@
                         <outlet property="pointX" destination="OA5-Pl-jr3" id="wQC-ND-kQe"/>
                         <outlet property="pointY" destination="oyS-sf-Adm" id="j1j-RT-j5H"/>
                         <outlet property="sensorDataView" destination="3g4-yZ-Elf" id="f3U-ST-SUy"/>
+                        <outlet property="startTrainingButton" destination="3yY-ep-95J" id="1jA-5q-lia"/>
                         <outlet property="timerLabel" destination="NJn-qe-rm0" id="e5x-Er-79C"/>
                     </connections>
                 </viewController>

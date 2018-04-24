@@ -12,7 +12,7 @@ enum BaseType: Int {
     case Easy = 0,
     Medium,
     Hard,
-    Extreme;
+    Measurement;
     
     static func toString(baseType: BaseType) -> String {
         switch(baseType) {
@@ -22,14 +22,14 @@ enum BaseType: Int {
             return "Medium"
         case BaseType.Hard:
             return "Hard"
-        case BaseType.Extreme:
-            return "Extreme"
+        case BaseType.Measurement:
+            return "Measurement"
         }
         return ""
     }
     
     static func count() -> Int {
         // NOTE: this should be the last enum value and will need to be updated with changes
-        return BaseType.Extreme.hashValue + 1
+        return BaseType.Measurement.hashValue + 1
     }
 }

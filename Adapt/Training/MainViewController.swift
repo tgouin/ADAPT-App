@@ -17,6 +17,9 @@ class MainViewController: UIViewController /*, CLLocationManagerDelegate */{
     @IBOutlet weak var rollPointView: UIImageView!
     @IBOutlet weak var rollPointX: NSLayoutConstraint!
     @IBOutlet weak var rollPointY: NSLayoutConstraint!
+    @IBOutlet weak var startTrainingButton: UIButton!
+    
+    
     // movement sensitivity
     static var EULER_SCALAR: CGFloat = 16
     var tareOffset: CGPoint = CGPoint(x: 0, y: 0)
@@ -136,12 +139,14 @@ class MainViewController: UIViewController /*, CLLocationManagerDelegate */{
         runningScore = 0
         self.pointX.constant = 0
         self.pointY.constant = 0
+        self.startTrainingButton.isEnabled = true
     }
     
     @IBAction func startTraining(_ sender: Any) {
         countdownRunning = true
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateCountdownLabel), userInfo: nil, repeats: true)
         countdownLabel.layer.isHidden = false
+        self.startTrainingButton.isEnabled = false
     }
     
     func trainingStart(){
